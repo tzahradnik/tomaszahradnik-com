@@ -1,0 +1,14 @@
+.DS_Store
+*.local
+.env*
+
+# Claude Code internal files
+.claude/
+.claudecodeignore
+claude.md
+
+# Confidential / internal files
+*.pdf
+pristupy.html
+cv-anonymized.html
+*-original.jpg

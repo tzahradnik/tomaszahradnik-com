@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gmail Signature – Tomáš Zahradník</title>
+  <style>
+    /* ── Stránka jen pro náhled ── */
+    body {
+      margin: 0;
+      padding: 40px 24px;
+      background: #f0f0f0;
+      font-family: Arial, sans-serif;
+    }
+    .preview-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 12px;
+    }
+    .preview-box {
+      display: inline-block;
+      background: #ffffff;
+      padding: 32px 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+      margin-bottom: 40px;
+    }
+    .preview-box-dark {
+      background: #1e1e1e;
+    }
+    .instructions {
+      max-width: 600px;
+      background: #fff;
+      border-radius: 8px;
+      padding: 24px 28px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #333;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .instructions h2 { margin-top: 0; font-size: 16px; color: #111; }
+    .instructions code {
+      background: #f3f0f9;
+      color: #6A4C93;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+    ol { padding-left: 18px; }
+    li { margin-bottom: 6px; }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════
+       NÁHLED – LIGHT MODE
+  ══════════════════════════════════════ -->
+  <div class="preview-label">Light mode</div>
+  <div class="preview-box">
+
+    <!-- ═══════════════════════════════════════════════════════
+         PODPIS – zkopíruj obsah níže do Gmailu
+    ═══════════════════════════════════════════════════════ -->
+
+    <table cellpadding="0" cellspacing="0" border="0" role="presentation"
+           style="font-family: Arial, Helvetica, sans-serif; border-collapse: collapse;">
+      <tr>
+        <!-- Fialová svislá linka -->
+        <td style="width: 3px; background: linear-gradient(180deg, #4E3570 0%, #6A4C93 45%, #8B6DB5 100%); border-radius: 2px; padding: 0;">&nbsp;</td>
+
+        <td style="width: 18px;">&nbsp;</td>
+
+        <!-- Obsah podpisu -->
+        <td style="vertical-align: top;">
+          <table cellpadding="0" cellspacing="0" border="0" role="presentation">
+
+            <!-- Jméno -->
+            <tr>
+              <td style="padding-bottom: 1px; padding-top: 2px;">
+                <span style="font-family: Georgia, 'Times New Roman', serif; font-size: 20px; font-weight: 700; color: #1A1523; letter-spacing: -0.01em; line-height: 1.2;">
+                  Tomáš <em style="font-style: italic; color: #6A4C93;">Zahradník</em>
+                </span>
+              </td>
+            </tr>
+
+            <!-- Role -->
+            <tr>
+              <td style="padding-bottom: 14px; padding-top: 4px;">
+                <span style="font-family: Arial, Helvetica, sans-serif; font-size: 11px; font-weight: 700; color: #8B6DB5; letter-spacing: 0.14em; text-transform: uppercase;">
+                  Interim CMO &nbsp;·&nbsp; Řízení marketingu
+                </span>
+              </td>
+            </tr>
+
+            <!-- Oddělovač -->
+            <tr>
+              <td style="padding-bottom: 10px; line-height: 0; font-size: 0;">
+                <table cellpadding="0" cellspacing="0" border="0" role="presentation">
+                  <tr>
+                    <td style="height: 1px; width: 180px; background: linear-gradient(90deg, #6A4C93 0%, #C4A8E8 60%, transparent 100%); line-height: 0; font-size: 0;"></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <!-- Email -->
+            <tr>
+              <td style="padding-bottom: 3px; line-height: 16px;">
+                <a href="mailto:info@tomaszahradnik.com"
+                   style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 16px; color: #5C5470; text-decoration: none;">info@tomaszahradnik.com</a>
+              </td>
+            </tr>
+
+            <!-- Telefon -->
+            <tr>
+              <td style="padding-bottom: 3px; line-height: 16px;">
+                <a href="tel:+420774587771"
+                   style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 16px; color: #5C5470; text-decoration: none;">+420 774 587 771</a>
+              </td>
+            </tr>
+
+            <!-- Web -->
+            <tr>
+              <td style="padding-bottom: 0; line-height: 16px;">
+                <a href="https://tomaszahradnik.com"
+                   style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 16px; color: #6A4C93; text-decoration: none; font-weight: 600;">tomaszahradnik.com</a>
+              </td>
+            </tr>
+
+          </table>
+        </td>
+      </tr>
+    </table>
+
+    <!-- ═══ KONEC PODPISU ═══ -->
+
+  </div>
+
+  <!-- ══════════════════════════════════════
+       NÁHLED – DARK MODE simulace
+  ══════════════════════════════════════ -->
+  <br>
+  <div class="preview-label">Dark mode (simulace – Gmail si barvy přizpůsobuje automaticky)</div>
+  <div class="preview-box preview-box-dark">
+    <table cellpadding="0" cellspacing="0" border="0" role="presentation"
+           style="font-family: Arial, Helvetica, sans-serif; border-collapse: collapse;">
+      <tr>
+        <td style="width: 3px; background: linear-gradient(180deg, #4E3570 0%, #6A4C93 45%, #8B6DB5 100%); border-radius: 2px; padding: 0;">&nbsp;</td>
+        <td style="width: 18px;">&nbsp;</td>
+        <td style="vertical-align: top;">
+          <table cellpadding="0" cellspacing="0" border="0" role="presentation">
+            <tr>
+              <td style="padding-bottom: 1px; padding-top: 2px;">
+                <span style="font-family: Georgia, 'Times New Roman', serif; font-size: 20px; font-weight: 700; color: #F0EAF9; letter-spacing: -0.01em; line-height: 1.2;">
+                  Tomáš <em style="font-style: italic; color: #C4A8E8;">Zahradník</em>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding-bottom: 14px; padding-top: 4px;">
+                <span style="font-family: Arial, Helvetica, sans-serif; font-size: 11px; font-weight: 700; color: #C4A8E8; letter-spacing: 0.14em; text-transform: uppercase;">
+                  Interim CMO &nbsp;·&nbsp; Řízení marketingu
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding-bottom: 10px; line-height: 0; font-size: 0;">
+                <table cellpadding="0" cellspacing="0" border="0" role="presentation">
+                  <tr>
+                    <td style="height: 1px; width: 180px; background: linear-gradient(90deg, #8B6DB5 0%, #C4A8E8 60%, transparent 100%); line-height: 0; font-size: 0;"></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding-bottom: 3px; line-height: 16px;">
+                <a href="mailto:info@tomaszahradnik.com"
+                   style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 16px; color: #B0A8C0; text-decoration: none;">info@tomaszahradnik.com</a>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding-bottom: 3px; line-height: 16px;">
+                <a href="tel:+420774587771"
+                   style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 16px; color: #B0A8C0; text-decoration: none;">+420 774 587 771</a>
+              </td>
+            </tr>
+            <tr>
+              <td style="line-height: 16px;">
+                <a href="https://tomaszahradnik.com"
+                   style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 16px; color: #C4A8E8; text-decoration: none; font-weight: 600;">tomaszahradnik.com</a>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       INSTRUKCE
+  ══════════════════════════════════════ -->
+  <div class="instructions">
+    <h2>Jak vložit podpis do Gmailu</h2>
+    <ol>
+      <li>Otevři tento soubor v prohlížeči (Chrome nebo Safari).</li>
+      <li>Klikni dovnitř světlého boxu (<em>Light mode</em>) a stiskni <code>Cmd+A</code>, pak <code>Cmd+C</code> — ale <strong>označ jen samotnou tabulku podpisu</strong>, ne celou stránku. Nejlépe: klikni před „Tomáš", táhni myší po „tomaszahradnik.com" a zkopíruj.</li>
+      <li>V Gmailu jdi do <code>Nastavení → Zobrazit všechna nastavení → Obecné → Podpis</code>.</li>
+      <li>Vlož (<code>Cmd+V</code>) do textového pole podpisu. Gmail zachová formátování.</li>
+      <li>Ulož nastavení dole na stránce.</li>
+    </ol>
+    <p><strong>Pozn. k dark mode:</strong> Gmail v tmavém režimu automaticky přizpůsobuje barvy — fialová linka a akcenty zůstanou viditelné. Druhý (tmavý) box slouží pouze jako vizuální simulace.</p>
+    <p><strong>Pozn. k ikonám:</strong> Ikony vedle kontaktů se zobrazí pouze pokud nahraješ soubory <code>sig-mail.png</code>, <code>sig-phone.png</code>, <code>sig-web.png</code> na web. Jinak se skryjí automaticky — podpis bude fungovat i bez nich.</p>
+  </div>
+
+</body>
+</html>

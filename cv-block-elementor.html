@@ -1,0 +1,3176 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+
+<style>
+  /* ── Elementor/theme overrides: full-bleed widget, no wrapper padding ── */
+  .elementor-widget-container:has(.tz-cv-block) {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .elementor-column:has(.tz-cv-block) {
+    padding: 0 !important;
+  }
+  .elementor-section:has(.tz-cv-block) {
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: clip !important;
+    background: #1a0f2e !important;
+  }
+  .elementor-section:has(.tz-cv-block) > .elementor-container {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+  /* Skrýt Elementor shape dividers (dekorativní tvary na sekcích) */
+  .elementor-shape {
+    display: none !important;
+  }
+  /* Odstranit padding z elementor-element-populated který způsobuje tmavé mezery */
+  .elementor-widget-wrap:has(.tz-cv-block),
+  .elementor-element-populated:has(.tz-cv-block) {
+    padding: 0 !important;
+  }
+
+  :root {
+    --primary: #6A4C93;
+    --primary-light: #8B6DB5;
+    --primary-dark: #4E3570;
+    --primary-glow: #6A4C9320;
+    --accent: #C4A8E8;
+    --surface: #FAFAF8;
+    --surface-alt: #F3EFF9;
+    --text-primary: #1A1523;
+    --text-secondary: #5C5470;
+    --text-muted: #9B93A8;
+    --border: #E8E0F0;
+  }
+
+  .tz-cv-block *,
+  .tz-cv-block *::before,
+  .tz-cv-block *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .tz-cv-block {
+    font-family: 'Inter Tight', sans-serif;
+    color: var(--text-primary);
+    background: var(--surface);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .tz-cv-block a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* ─── LAYOUT ─── */
+  .tz-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3.5rem 2rem 4rem;
+  }
+
+  /* ─── HERO ─── */
+  .tz-hero {
+    position: relative;
+    padding: 5.5rem 0 5rem;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+  }
+
+  .tz-hero-content {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .tz-hero-bg {
+    position: absolute;
+    inset: 0;
+    background: var(--surface);
+    overflow: hidden;
+    z-index: 0;
+  }
+
+
+
+
+  .tz-hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .tz-hero-label {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .tz-hero-label::before {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 1.5px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+  }
+
+  .tz-hero-name {
+    font-family: 'Playfair Display', serif !important;
+    font-size: clamp(3.2rem, 11vw, 5.5rem) !important;
+    font-weight: 900 !important;
+    line-height: 1.0 !important;
+    letter-spacing: -0.025em;
+    color: var(--text-primary);
+    margin-bottom: 1.75rem;
+  }
+
+  .tz-hero-name em {
+    font-style: italic;
+    display: inline-block;
+    padding-right: 0.12em; /* buffer pro kurzívu přesahující bbox */
+    background: linear-gradient(125deg, var(--primary-dark) 0%, var(--primary) 40%, var(--primary-light) 70%, var(--accent) 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: tz-gradient-pan 6s ease infinite;
+  }
+
+  @keyframes tz-gradient-pan {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Badge row */
+  .tz-hero-role-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 2rem;
+  }
+
+  .tz-role-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    border-radius: 100px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tz-role-badge-primary {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light));
+    background-size: 200% 200%;
+    color: white;
+    box-shadow: 0 4px 14px #6A4C9340;
+    animation: tz-gradient-pan 5s ease infinite;
+  }
+
+  .tz-role-badge-primary:hover {
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 8px 24px #6A4C9355;
+  }
+
+  .tz-role-badge-secondary {
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(8px);
+    border: 1.5px solid var(--border);
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  .tz-role-badge-secondary:hover {
+    background: white;
+    border-color: var(--primary-light);
+    color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--primary-glow);
+  }
+
+  .tz-hero-bio {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    max-width: 560px;
+    line-height: 1.85;
+    margin-bottom: 2.25rem;
+  }
+
+  .tz-hero-bio strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  /* Capacity indicator */
+  .tz-capacity-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+    padding: 0.9rem 1.2rem;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.9);
+    border-radius: 14px;
+    max-width: 100%;
+    box-shadow: 0 4px 16px rgba(106,76,147,0.08);
+    transition: all 0.3s ease;
+  }
+
+  .tz-capacity-row:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(106,76,147,0.14);
+  }
+
+  .tz-capacity-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+
+  .tz-capacity-bar-wrap {
+    flex: 1;
+    min-width: 60px;
+    height: 5px;
+    background: var(--border);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+
+  .tz-capacity-bar {
+    height: 100%;
+    width: 100%;
+    transform-origin: left center;
+    transform: scaleX(0);
+    border-radius: 100px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transition: transform 1.4s cubic-bezier(0.4, 0, 0.2, 1) 0.6s;
+  }
+
+  .tz-capacity-bar.tz-bar-loaded {
+    transform: scaleX(0.25);
+  }
+
+  .tz-capacity-value {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--primary);
+    white-space: nowrap;
+  }
+
+  .tz-avail-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #4CAF50;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .tz-avail-dot::after {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    background: #4CAF5040;
+    animation: tz-ripple 2s ease-out infinite;
+  }
+
+  @keyframes tz-ripple {
+    0%   { transform: scale(0.8); opacity: 1; }
+    100% { transform: scale(2.2); opacity: 0; }
+  }
+
+  .tz-contact-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .tz-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.55rem 1rem;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1.5px solid var(--border);
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: var(--text-secondary);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    white-space: nowrap;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tz-pill:hover {
+    background: white;
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 6px 18px var(--primary-glow);
+  }
+
+  .tz-pill-icon {
+    width: 14px;
+    height: 14px;
+    opacity: 0.55;
+    transition: opacity 0.2s ease;
+  }
+
+  .tz-pill:hover .tz-pill-icon {
+    opacity: 1;
+  }
+
+  /* ─── SERVICES / 4 PILLARS ─── */
+  .tz-pillars-wrap {
+    text-align: center;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #3B1778 0%, #6A4C93 45%, #8B5CF6 100%);
+    padding: 3.5rem 2rem 0;
+    margin-top: -1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .tz-pillars-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 5vw, 2.1rem);
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.35rem;
+    line-height: 1.2;
+  }
+
+  .tz-pillars-subheading {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 2rem;
+  }
+
+  .tz-pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+    margin: 0 auto 2.5rem;
+    max-width: 860px;
+    text-align: center;
+  }
+
+  .tz-pillar-card {
+    will-change: transform;
+    transform-style: preserve-3d;
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 16px;
+    padding: 1.4rem 1.2rem 1.3rem;
+    cursor: default;
+    transition: all 0.38s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tz-pillar-card:hover {
+    box-shadow: 0 18px 44px #6A4C9330;
+    border-color: rgba(139,92,246,0.3);
+  }
+
+  .tz-pillar-icon {
+    color: var(--primary-light);
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 1;
+    transition: color 0.38s ease;
+    display: flex;
+    justify-content: center;
+  }
+  .tz-pillar-card:hover .tz-pillar-icon { color: var(--primary); }
+
+  .tz-pillar-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.7rem;
+    position: relative;
+    z-index: 1;
+    transition: color 0.38s ease, opacity 0.38s ease;
+  }
+
+  .tz-pillar-card:hover .tz-pillar-num {
+    color: var(--primary);
+    opacity: 0.5;
+  }
+
+  .tz-pillar-card-name {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.3;
+    margin-bottom: 0.45rem;
+    position: relative;
+    z-index: 1;
+    transition: color 0.38s ease;
+  }
+
+  .tz-pillar-card:hover .tz-pillar-card-name { color: var(--primary-dark); }
+
+  .tz-pillar-card-desc {
+    font-size: 0.76rem;
+    color: var(--text-muted);
+    font-style: italic;
+    line-height: 1.5;
+    position: relative;
+    z-index: 1;
+    transition: color 0.38s ease;
+  }
+
+  .tz-pillar-card:hover .tz-pillar-card-desc { color: var(--text-muted); }
+
+  /* Expanded description */
+  .tz-pillar-card-expand {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    margin-top: 0;
+    transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1),
+                opacity 0.3s ease,
+                margin-top 0.3s ease;
+  }
+
+  .tz-pillar-card:hover .tz-pillar-card-expand,
+  .tz-pillar-card.tz-expanded .tz-pillar-card-expand {
+    max-height: 8em;
+    opacity: 1;
+    margin-top: 0.75rem;
+  }
+
+  /* ─── CLIENT LOGO MARQUEE ─── */
+  .tz-logo-marquee-outer {
+    position: relative;
+    width: 100vw;
+    left: calc(-50vw + 50%);
+    overflow: hidden;
+    margin: 1.75rem 0 2rem;
+    padding: 1.1rem 0;
+    background: white;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .tz-logo-marquee-row {
+    display: flex;
+    overflow: hidden;
+  }
+  .tz-logo-marquee-track {
+    display: flex;
+    gap: 0.75rem;
+    flex-shrink: 0;
+    align-items: center;
+    animation: tz-marquee-l 60s linear infinite;
+  }
+  .tz-logo-marquee-outer:hover .tz-logo-marquee-track {
+    animation-play-state: paused;
+  }
+  @keyframes tz-marquee-l {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .tz-mq-logo {
+    flex-shrink: 0;
+    height: 56px;
+    min-width: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.55rem 1.1rem;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 1px 4px rgba(106,76,147,0.06);
+    transition: border-color 0.3s, box-shadow 0.3s;
+    position: relative;
+    top: 0;
+  }
+  .tz-mq-logo:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 14px rgba(106,76,147,0.14);
+  }
+  .tz-mq-logo img {
+    max-height: 30px;
+    max-width: 100px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(100%) opacity(0.5);
+    transition: filter 0.35s ease;
+    display: block;
+  }
+  .tz-mq-logo:hover img {
+    filter: grayscale(0%) opacity(1);
+  }
+
+  .tz-pillars-closing {
+    font-style: italic;
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.85);
+    max-width: 480px;
+    margin: 0 auto 1.5rem;
+    line-height: 1.7;
+  }
+
+  .tz-pillars-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: white;
+    border: none;
+    color: var(--primary-dark);
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.18), 0 1px 4px rgba(0,0,0,0.1);
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.01em;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tz-pillars-cta:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.22), 0 2px 8px rgba(0,0,0,0.12);
+    color: var(--primary);
+  }
+
+  /* ─── SECTION COMMON ─── */
+  .tz-section-fullwidth {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    padding: 0;
+    margin-top: 4rem;
+  }
+
+  .tz-section-fullwidth .tz-section-header {
+    max-width: 860px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .tz-section-fullwidth .tz-section-header::after {
+    left: 2rem;
+  }
+
+  .tz-section-fullwidth .tz-testimonials-grid {
+    padding: 0 2rem;
+    max-width: 100%;
+  }
+
+  /* Override section reveal transform pro fullwidth variantu */
+  .tz-section-fullwidth { transform: translateX(-50%) translateY(28px); }
+  .tz-section-fullwidth.tz-visible { transform: translateX(-50%) translateY(0) !important; }
+
+  .tz-section {
+    margin-bottom: 4rem;
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .tz-section.tz-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .tz-section-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 0.85rem;
+    position: relative;
+  }
+
+  .tz-section-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--primary), var(--accent), transparent);
+  }
+
+  .tz-section-title {
+    font-family: 'Playfair Display', serif !important;
+    font-size: clamp(1.6rem, 5vw, 2.1rem) !important;
+    font-weight: 700 !important;
+    color: var(--text-primary) !important;
+    line-height: 1.2 !important;
+  }
+
+  /* ─── TIMELINE ─── */
+  .tz-timeline {
+    position: relative;
+    padding-left: 1.5rem;
+  }
+
+  .tz-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 0;
+    width: 1.5px;
+    background: linear-gradient(to bottom, var(--primary), var(--accent), transparent);
+  }
+
+  .tz-timeline-item {
+    position: relative;
+    padding-bottom: 2.5rem;
+  }
+
+  .tz-timeline-item:last-child {
+    padding-bottom: 0;
+  }
+
+  .tz-timeline-dot {
+    position: absolute;
+    left: -1.5rem;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--primary);
+    border: 2px solid var(--surface);
+    box-shadow: 0 0 0 2px var(--primary-light);
+    transform: translateX(-4px);
+  }
+
+  .tz-job-card {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 16px;
+    padding: 1.4rem 1.6rem;
+    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tz-job-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 16px 16px 0 0;
+  }
+
+  .tz-job-card {
+    will-change: transform;
+    transform-style: preserve-3d;
+  }
+
+  .tz-job-card:hover {
+    box-shadow: 0 16px 40px rgba(106,76,147,0.16);
+    border-color: var(--accent);
+  }
+
+  .tz-job-card:hover::after {
+    transform: scaleX(1);
+  }
+
+  .tz-job-meta {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .tz-job-company {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .tz-job-dates {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    white-space: nowrap;
+    padding: 0.2rem 0.6rem;
+    background: var(--surface-alt);
+    border-radius: 100px;
+    border: 1px solid var(--border);
+  }
+
+  .tz-job-role {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 0.75rem;
+  }
+
+  .tz-job-story {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    font-style: italic;
+  }
+
+  .tz-job-story strong {
+    color: var(--text-primary);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  .tz-job-results {
+    margin-top: 0.85rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tz-result-tag {
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: 100px;
+    background: var(--surface-alt);
+    color: var(--primary-dark);
+    border: 1px solid var(--border);
+  }
+
+  .tz-freelance-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+
+  .tz-freelance-item {
+    background: var(--surface-alt);
+    border-radius: 8px;
+    padding: 0.6rem 0.9rem;
+    border-left: 2px solid var(--accent);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .tz-freelance-item-link {
+    text-decoration: none;
+    transition: all 0.25s ease;
+    cursor: pointer;
+  }
+
+  .tz-freelance-item-link:hover {
+    background: white;
+    border-left-color: var(--primary);
+    box-shadow: 0 3px 12px var(--primary-glow);
+    transform: translateX(3px);
+  }
+
+  .tz-freelance-item-logo {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    opacity: 0.7;
+    margin-top: 0.1rem;
+  }
+
+  .tz-freelance-item-link:hover .tz-freelance-item-logo {
+    opacity: 1;
+    border-color: var(--primary-light);
+  }
+
+  .tz-freelance-item-name {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .tz-freelance-item-desc {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.15rem;
+  }
+
+  /* ─── GLASS CARDS (Education) ─── */
+  .tz-edu-grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .tz-edu-card {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 14px;
+    padding: 1.25rem 1.5rem;
+    box-shadow: 0 4px 20px rgba(106, 76, 147, 0.06);
+    transition: all 0.3s ease;
+  }
+
+  .tz-edu-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px var(--primary-glow);
+  }
+
+  .tz-edu-school {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+  }
+
+  .tz-edu-field {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+
+  .tz-edu-year {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.35rem;
+    font-weight: 500;
+  }
+
+  /* ─── INLINE REFERENCE ─── */
+  .tz-inline-ref {
+    margin-top: 0.75rem;
+    padding: 1.25rem 1.5rem;
+    background: linear-gradient(135deg, #F8F4FF 0%, #EFE8FB 100%);
+    border: 1px solid #DDD0F0;
+    border-radius: 14px;
+    position: relative;
+  }
+
+  .tz-inline-ref-quote {
+    color: var(--accent);
+    opacity: 0.5;
+    margin-bottom: 0.5rem;
+    display: block;
+    width: 16px;
+    height: 12px;
+  }
+
+  .tz-inline-ref-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 0.45rem;
+  }
+
+  .tz-inline-ref-text {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    line-height: 1.85;
+    font-style: normal;
+    margin-bottom: 1rem;
+    opacity: 0.88;
+  }
+
+  .tz-inline-ref-author {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .tz-inline-ref-logo {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: white;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    flex-shrink: 0;
+  }
+
+  .tz-inline-ref-name {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: block;
+  }
+
+  .tz-inline-ref-role {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    display: block;
+  }
+
+  /* ─── FREELANCE GRID ─── */
+  .tz-freelance-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+
+  .tz-freelance-card {
+    background: var(--surface-alt);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 0.9rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: all 0.25s ease;
+  }
+
+  .tz-freelance-card-link {
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .tz-freelance-card-link:hover {
+    background: white;
+    border-color: var(--primary-light);
+    box-shadow: 0 4px 16px var(--primary-glow);
+    transform: translateY(-3px);
+  }
+
+  .tz-freelance-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .tz-freelance-card-logo {
+    width: 32px;
+    height: 32px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+    opacity: 0.7;
+    flex-shrink: 0;
+  }
+
+  .tz-freelance-card-link:hover .tz-freelance-card-logo {
+    opacity: 1;
+    border-color: var(--primary-light);
+  }
+
+  .tz-freelance-card-arrow {
+    opacity: 0;
+    color: var(--primary);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .tz-freelance-card-link:hover .tz-freelance-card-arrow {
+    opacity: 1;
+    transform: translateX(3px);
+  }
+
+  .tz-freelance-card-name {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.3;
+  }
+
+  .tz-freelance-card-desc {
+    font-size: 0.73rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* ─── COLLAPSIBLE ─── */
+  .tz-collapsible {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    background: white;
+  }
+
+  .tz-collapsible summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    gap: 1rem;
+  }
+
+  .tz-collapsible summary::-webkit-details-marker { display: none; }
+
+  .tz-collapsible summary:hover {
+    background: var(--surface-alt);
+  }
+
+  .tz-collapsible-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .tz-collapsible-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .tz-collapsible-subtitle {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .tz-collapsible-chevron {
+    flex-shrink: 0;
+    color: var(--text-muted);
+    transition: transform 0.25s ease;
+  }
+
+  details[open] .tz-collapsible-chevron {
+    transform: rotate(180deg);
+  }
+
+  .tz-collapsible-body {
+    padding: 0 1.25rem 1.25rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .tz-training-group {
+    margin-top: 1rem;
+  }
+
+  .tz-training-group-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--primary-light);
+    margin-bottom: 0.4rem;
+    margin-top: 0.75rem;
+  }
+
+  .tz-training-group-label:first-child { margin-top: 0; }
+
+  .tz-training-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 0.2rem 0;
+    font-size: 0.77rem;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .tz-training-row:last-child { border-bottom: none; }
+
+  .tz-training-row-topic { flex: 1; line-height: 1.45; }
+
+  .tz-training-row-lector {
+    font-weight: 700;
+    color: var(--primary-dark);
+    white-space: nowrap;
+    font-size: 0.75rem;
+  }
+
+  .tz-books-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0 1.25rem;
+    margin-top: 0.75rem;
+  }
+
+  .tz-book-item {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    padding: 0.3rem 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+  }
+
+  .tz-book-item:last-child { border-bottom: none; }
+
+  .tz-book-author {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .tz-goodreads-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 1rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--primary);
+    text-decoration: none;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid var(--primary-light);
+    border-radius: 100px;
+    transition: all 0.2s ease;
+  }
+
+  .tz-goodreads-link:hover {
+    background: var(--primary);
+    color: white;
+  }
+
+  /* ─── PRICING HERO ─── */
+  #tz-sec-pricing {
+    margin-bottom: 0;
+    margin-top: -240px;
+    position: relative;
+    z-index: 0;
+    background: #1a0f2e;
+  }
+
+  #tz-sec-testimonials {
+    position: relative;
+    z-index: 1;
+    background: #FAFAF8;
+    padding-bottom: 3rem;
+  }
+
+  .tz-pricing-section-header {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .tz-pricing-hero {
+    position: relative;
+    overflow: hidden;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    padding: 16rem 0 8rem;
+    background: linear-gradient(to bottom,
+      #FAFAF8 0%,
+      #2d1654 18%,
+      #1a0f2e 36%,
+      #1a0f2e 100%
+    );
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ─── PRICING WAVE TRANSITION ─── */
+  .tz-pricing-wave {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 100%;
+    height: 110px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .tz-pricing-wave svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  /* Aurora canvas pro pricing sekci */
+  #tz-pricing-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 1;
+    mix-blend-mode: screen;
+  }
+
+  .tz-pricing-hero-inner {
+    position: relative;
+    z-index: 3;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    text-align: center;
+  }
+
+  .tz-pricing-hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.6rem;
+  }
+
+  .tz-pricing-hero-sub {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.72);
+    margin-bottom: 2.5rem;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .tz-pricing-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .tz-pricing-card {
+    will-change: transform;
+    transform-style: preserve-3d;
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(255,255,255,1);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(106,76,147,0.08);
+  }
+
+  .tz-pricing-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(106,76,147,0.16);
+    border-color: var(--accent);
+  }
+
+  .tz-pricing-card-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .tz-pricing-card-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--primary);
+    line-height: 1.1;
+    margin-bottom: 0.1rem;
+  }
+
+  .tz-pricing-card-unit {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-left: 0.2rem;
+  }
+
+  .tz-pricing-card-desc {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+    line-height: 1.55;
+  }
+
+  .tz-pricing-cta-row {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tz-pricing-cta-primary,
+  .tz-pricing-cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.4rem;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light));
+    background-size: 200% 200%;
+    color: white;
+    box-shadow: 0 4px 18px #6A4C9350;
+    animation: tz-gradient-pan 5s ease infinite;
+    border: none;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tz-pricing-cta-primary::before,
+  .tz-pricing-cta-secondary::before {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(255,255,255,0.45) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    left: var(--mx, -200px);
+    top: var(--my, -200px);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    z-index: 1;
+  }
+
+  .tz-pricing-cta-primary:hover::before,
+  .tz-pricing-cta-secondary:hover::before { opacity: 1; }
+
+  .tz-pricing-cta-primary > *,
+  .tz-pricing-cta-secondary > * { position: relative; z-index: 2; }
+
+  .tz-pricing-cta-primary:hover,
+  .tz-pricing-cta-secondary:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 28px #6A4C9360;
+  }
+
+  .tz-pricing-note-inline {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 1rem;
+    line-height: 1.55;
+  }
+
+  /* ─── TRAINING LIST ─── */
+  .tz-training-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .tz-training-year {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 0.75rem;
+    margin-bottom: 0.2rem;
+    padding-bottom: 0.2rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .tz-training-year:first-child { margin-top: 0; }
+
+  .tz-training-item {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    display: flex;
+    gap: 0.5rem;
+    align-items: baseline;
+  }
+
+  .tz-training-date {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    white-space: nowrap;
+    min-width: 52px;
+    flex-shrink: 0;
+  }
+
+  .tz-training-lector {
+    font-weight: 700;
+    color: var(--primary-dark);
+    font-style: normal;
+  }
+
+  /* ─── TOOL CLOUD ─── */
+  .tz-tool-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    align-items: center;
+  }
+
+  .tz-tool-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 0.85rem 0.45rem 0.6rem;
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    cursor: default;
+    transition: all 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+    color: var(--text-secondary);
+    position: relative;
+  }
+
+  .tz-tool-item:nth-child(3n+1) { animation: tz-cloud-float 6s ease-in-out infinite; }
+  .tz-tool-item:nth-child(3n+2) { animation: tz-cloud-float 7.5s ease-in-out infinite 0.8s; }
+  .tz-tool-item:nth-child(3n)   { animation: tz-cloud-float 5.5s ease-in-out infinite 1.6s; }
+
+  @keyframes tz-cloud-float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-4px); }
+  }
+
+  .tz-tool-item:hover {
+    background: var(--surface-alt);
+    border-color: var(--primary-light);
+    color: var(--primary-dark);
+    transform: translateY(-5px) scale(1.04) !important;
+    box-shadow: 0 8px 22px var(--primary-glow);
+    animation-play-state: paused;
+    z-index: 2;
+  }
+
+  .tz-tool-item-lg {
+    padding: 0.55rem 1rem 0.55rem 0.7rem;
+    font-weight: 600;
+    font-size: 0.82rem;
+    border-color: #D4C4E8;
+    background: linear-gradient(135deg, #FAFAF8, #F3EFF9);
+  }
+
+  .tz-tool-item-lg:hover {
+    background: linear-gradient(135deg, #F3EFF9, #EAE0F5) !important;
+    border-color: var(--primary) !important;
+    box-shadow: 0 10px 28px #6A4C9328 !important;
+  }
+
+  .tz-tool-logo {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    opacity: 0.55;
+    transition: opacity 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tz-tool-item:hover .tz-tool-logo { opacity: 0.9; }
+
+  .tz-tool-name {
+    font-size: 0.78rem;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .tz-tool-item-lg .tz-tool-logo { width: 20px; height: 20px; }
+
+  /* ─── LEGACY skill pills (unused but kept for safety) ─── */
+  .tz-skill-pill { display: none; }
+  .tz-pills-row  { display: none; }
+  .tz-skill-group-label { display: none; }
+
+  /* ─── LANGUAGES ─── */
+  .tz-lang-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .tz-lang-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .tz-lang-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    min-width: 90px;
+    color: var(--text-primary);
+  }
+
+  .tz-lang-bar-wrap {
+    flex: 1;
+    height: 4px;
+    background: var(--border);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+
+  .tz-lang-bar {
+    height: 100%;
+    border-radius: 100px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .tz-lang-level {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    min-width: 80px;
+    text-align: right;
+  }
+
+  /* ─── MIMO PRACOVNÍ DOBU ─── */
+  .tz-fun-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .tz-fun-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.9rem 1.1rem;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: all 0.25s ease;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .tz-fun-item:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 16px var(--primary-glow);
+    transform: translateX(3px);
+  }
+
+  .tz-fun-item-icon {
+    font-size: 1.25rem;
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+  }
+
+  .tz-fun-item-body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .tz-fun-item-title {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .tz-fun-item-title svg {
+    color: var(--primary-light);
+    flex-shrink: 0;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .tz-fun-item:hover .tz-fun-item-title svg {
+    opacity: 1;
+  }
+
+  .tz-fun-item-desc {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+
+  .tz-fun-item-link {
+    font-size: 0.75rem;
+    color: var(--primary);
+    font-weight: 500;
+  }
+
+  /* ─── QUOTE BLOCK ─── */
+  .tz-quote {
+    margin: 2rem 0;
+    padding: 1.5rem 1.75rem;
+    background: var(--surface-alt);
+    border-left: 3px solid var(--primary);
+    border-radius: 0 12px 12px 0;
+  }
+
+  .tz-quote p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--text-primary);
+    line-height: 1.7;
+  }
+
+  .tz-quote cite {
+    display: block;
+    margin-top: 0.6rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+  }
+
+  /* ─── LANGUAGES SEPARATOR ─── */
+  .tz-lang-wrap {
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem 1.75rem;
+  }
+
+  /* ─── REFERENCE ─── */
+  .tz-reference-wrap {
+    background: linear-gradient(150deg, #EDE4FF 0%, #F3EFF9 40%, #EAE0F8 100%);
+    border-radius: 20px;
+    padding: 2.5rem 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tz-reference-wrap::before {
+    content: '\201C';
+    position: absolute;
+    top: -1.5rem;
+    left: 1.25rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 9rem;
+    line-height: 1;
+    color: var(--primary);
+    opacity: 0.08;
+    pointer-events: none;
+  }
+
+  .tz-reference-wrap::after {
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    right: -40px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #6A4C9320 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .tz-reference-text {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.85;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .tz-reference-text p + p {
+    margin-top: 0.85rem;
+  }
+
+  .tz-reference-author {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    position: relative;
+    z-index: 1;
+    padding-top: 1.25rem;
+    border-top: 1px solid #D8CCF0;
+  }
+
+  .tz-reference-logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    flex-shrink: 0;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  }
+
+  .tz-reference-name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .tz-reference-title {
+    font-size: 0.76rem;
+    color: var(--text-muted);
+    margin-top: 0.1rem;
+  }
+
+  /* ─── PRICING ─── */
+  .tz-pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .tz-price-card {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tz-price-card-featured {
+    border-color: var(--primary);
+    background: linear-gradient(160deg, var(--surface-alt) 0%, white 100%);
+  }
+
+  .tz-price-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px var(--primary-glow);
+  }
+
+  .tz-price-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .tz-price-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--primary);
+    line-height: 1.1;
+  }
+
+  .tz-price-unit {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-left: 0.2rem;
+  }
+
+  .tz-price-desc {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    margin-top: 0.6rem;
+    line-height: 1.55;
+  }
+
+  .tz-price-note {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    padding: 0.75rem 1rem;
+    background: var(--surface-alt);
+    border-radius: 10px;
+    line-height: 1.55;
+    border: 1px solid var(--border);
+  }
+
+  /* ─── FOOTER STRIP ─── */
+  .tz-footer-strip {
+    position: relative;
+    z-index: 2;
+    margin-top: 0;
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.4rem;
+    background: #1a0f2e;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+  }
+
+  .tz-footer-strip p {
+    color: rgba(255,255,255,0.38);
+    font-size: 0.78rem;
+    line-height: 1.6;
+  }
+
+  .tz-footer-strip strong {
+    color: rgba(255,255,255,0.45);
+    font-weight: 400 !important;
+  }
+
+  .tz-cta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 1.2rem;
+    background: white;
+    color: var(--primary-dark);
+    border-radius: 100px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ─── CURSOR SPOTLIGHT ─── */
+  .tz-pill::before,
+  .tz-cta-link::before,
+  .tz-role-badge::before,
+  .tz-pillars-cta::before {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(255,255,255,0.45) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    left: var(--mx, -200px);
+    top: var(--my, -200px);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    z-index: 1;
+  }
+  .tz-pill:hover::before,
+  .tz-cta-link:hover::before,
+  .tz-role-badge:hover::before,
+  .tz-pillars-cta:hover::before {
+    opacity: 1;
+  }
+  .tz-pill > *,
+  .tz-cta-link > *,
+  .tz-role-badge > *,
+  .tz-pillars-cta > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  .tz-cta-link:hover {
+    background: var(--accent);
+    color: var(--primary-dark);
+    transform: translateY(-1px);
+  }
+
+  /* ─── TESTIMONIALS ─── */
+  .tz-testimonials-grid {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  .tz-testimonial-card {
+    flex: 1 1 0;
+    min-width: 0;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 1.75rem 1.75rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .tz-testimonial-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 8px 32px rgba(106,76,147,0.12);
+    transform: translateY(-2px);
+  }
+
+  .tz-testimonial-quote {
+    color: var(--accent);
+    margin-bottom: 1rem;
+    flex-shrink: 0;
+  }
+
+  .tz-testimonial-body {
+    overflow: hidden;
+    max-height: 13em;
+    transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+  }
+
+  .tz-testimonial-body.tz-expanded {
+    max-height: 600px;
+  }
+
+  .tz-testimonial-body::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2.5em;
+    background: linear-gradient(to bottom, transparent, white);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .tz-testimonial-body.tz-expanded::after {
+    opacity: 0;
+  }
+
+  .tz-testimonial-text {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.85;
+  }
+
+  .tz-testimonial-toggle {
+    font-size: 0.76rem !important;
+    font-weight: 700 !important;
+    color: var(--primary) !important;
+    cursor: pointer;
+    background: none !important;
+    background-color: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0.5rem 0 0 !important;
+    margin: 0 !important;
+    width: auto !important;
+    min-width: 0 !important;
+    letter-spacing: 0.03em;
+    display: inline-flex !important;
+    align-self: flex-start !important;
+    align-items: center;
+    gap: 0.3rem;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+    text-transform: none !important;
+    font-family: 'Inter Tight', sans-serif !important;
+  }
+
+  .tz-testimonial-toggle:hover { opacity: 1; }
+
+  .tz-testimonial-toggle svg {
+    transition: transform 0.3s ease;
+  }
+
+  .tz-testimonial-toggle.tz-open svg {
+    transform: rotate(180deg);
+  }
+
+  .tz-testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-top: 1.2rem;
+    padding-top: 1.1rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .tz-testimonial-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: white;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 4px rgba(106,76,147,0.06);
+  }
+
+  .tz-testimonial-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 7px;
+  }
+
+  .tz-testimonial-avatar-initials {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: 0.03em;
+    background: var(--surface-alt) !important;
+    width: 44px !important;
+    height: 44px !important;
+    flex-shrink: 0;
+  }
+
+  .tz-testimonial-name {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.3;
+  }
+
+  .tz-testimonial-role {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.15rem;
+  }
+
+  /* ─── HERO STAGGER ANIMATION ─── */
+  .tz-stagger > * {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .tz-stagger.tz-loaded > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0.05s; }
+  .tz-stagger.tz-loaded > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 0.15s; }
+  .tz-stagger.tz-loaded > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 0.25s; }
+  .tz-stagger.tz-loaded > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 0.35s; }
+  .tz-stagger.tz-loaded > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 0.45s; }
+  .tz-stagger.tz-loaded > *:nth-child(6) { opacity: 1; transform: none; transition-delay: 0.55s; }
+  .tz-stagger.tz-loaded > *:nth-child(7) { opacity: 1; transform: none; transition-delay: 0.65s; }
+
+  /* ─── HERO AURORA ─── */
+  .tz-hero-gradient {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 54%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  #tz-aurora-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  /* ─── HERO PHOTO ─── */
+  .tz-hero-photo-wrap {
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 270px;
+    height: 370px;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .tz-hero-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 28% top;
+    display: block;
+    filter: grayscale(100%) contrast(1.12) brightness(1.06);
+    -webkit-mask-image: radial-gradient(ellipse 88% 92% at 50% 46%,
+      black 46%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0.25) 78%, transparent 92%);
+    mask-image: radial-gradient(ellipse 88% 92% at 50% 46%,
+      black 46%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0.25) 78%, transparent 92%);
+    mix-blend-mode: luminosity;
+  }
+
+  /* Mesh overlay */
+  .tz-hero-photo-mesh {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 4;
+    background-image:
+      repeating-linear-gradient(0deg,
+        transparent, transparent 18px,
+        rgba(139,92,246,0.18) 18px, rgba(139,92,246,0.18) 19px),
+      repeating-linear-gradient(90deg,
+        transparent, transparent 18px,
+        rgba(109,40,217,0.14) 18px, rgba(109,40,217,0.14) 19px);
+    -webkit-mask-image: radial-gradient(ellipse 86% 90% at 50% 46%,
+      black 32%, rgba(0,0,0,0.55) 58%, transparent 80%);
+    mask-image: radial-gradient(ellipse 86% 90% at 50% 46%,
+      black 32%, rgba(0,0,0,0.55) 58%, transparent 80%);
+    mix-blend-mode: screen;
+    animation: tz-mesh-shift 28s linear infinite;
+  }
+
+  @keyframes tz-mesh-shift {
+    0%   { background-position: 0 0, 0 0; }
+    100% { background-position: 38px 38px, 38px 38px; }
+  }
+
+  @media (max-width: 700px) {
+    .tz-hero-gradient { width: 100%; opacity: 0.55; }
+    .tz-hero-photo-wrap { right: 50%; transform: translate(50%, -50%); width: 220px; height: 300px; }
+  }
+  @media (max-width: 480px) {
+    .tz-hero-gradient { display: none; }
+    .tz-hero-photo-wrap { display: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tz-hero-photo-mesh { animation: none !important; }
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 700px) {
+    .tz-inner { padding: 2.5rem 1.25rem 3rem; }
+    .tz-hero { padding: 3.5rem 0 4rem; }
+    .tz-hero-content { padding: 0 1.25rem; }
+    .tz-hero-gradient { width: 90%; right: -10%; opacity: 0.65; }
+    .tz-gb-3, .tz-gb-6 { display: none; }
+    .tz-pillars-grid { grid-template-columns: 1fr 1fr; }
+    .tz-pillars-wrap { padding: 2.5rem 1.25rem 0; }
+    .tz-logo-marquee-outer { margin: 1.25rem 0 1.5rem; }
+    .tz-pricing-cards { grid-template-columns: 1fr; }
+    .tz-pricing-grid { grid-template-columns: 1fr; }
+    .tz-freelance-grid { grid-template-columns: 1fr; }
+    .tz-books-list { grid-template-columns: 1fr 1fr; }
+    .tz-testimonials-grid { flex-direction: column; }
+    .tz-testimonial-card { flex: 1 1 auto; }
+    .tz-footer-strip { padding: 1rem 1.5rem; }
+    .tz-reference-wrap { padding: 1.75rem 1.25rem 1.5rem; }
+    .tz-section { margin-bottom: 2.75rem; }
+    .tz-lang-level { min-width: 60px; }
+  }
+
+  @media (max-width: 480px) {
+    .tz-inner { padding: 2rem 1rem 2.5rem; }
+    .tz-hero { padding: 2.5rem 0 3rem; }
+    .tz-hero-content { padding: 0 1rem; }
+    .tz-hero-gradient { display: none; }
+    .tz-job-meta { flex-direction: column; gap: 0.3rem; }
+    .tz-lang-item { flex-wrap: wrap; }
+    .tz-lang-level { text-align: left; min-width: unset; }
+    .tz-section-title { font-size: 1.35rem; }
+    .tz-section { margin-bottom: 2.25rem; }
+    .tz-capacity-row { max-width: 100%; }
+    .tz-pillars-grid { grid-template-columns: 1fr; }
+    .tz-mq-logo img { max-height: 26px; }
+    .tz-reference-wrap { padding: 1.5rem 1rem 1.25rem; }
+    .tz-pricing-section-header { padding: 0 1rem; }
+    .tz-pricing-hero-inner { padding: 0 1rem; }
+    .tz-pricing-hero { padding: 2.5rem 0 3rem; }
+    .tz-books-list { grid-template-columns: 1fr; }
+    .tz-training-row { flex-wrap: wrap; gap: 0.2rem; }
+    .tz-training-row-lector { white-space: normal; }
+    .tz-pill { font-size: 0.75rem; padding: 0.5rem 0.85rem; }
+    .tz-contact-pills { gap: 0.5rem; }
+    .tz-tool-item { animation: none !important; }
+    .tz-quote { padding: 1.1rem 1.25rem; }
+    .tz-lang-wrap { padding: 1.1rem 1rem; }
+  }
+</style>
+
+<div class="tz-cv-block">
+
+  <!-- ═══ HERO ═══ -->
+  <div class="tz-hero">
+    <div class="tz-hero-bg"></div>
+    <div class="tz-hero-gradient" aria-hidden="true">
+      <canvas id="tz-aurora-canvas"></canvas>
+    </div>
+    <div class="tz-hero-content tz-stagger" id="tz-hero-stagger">
+      <div class="tz-hero-label">Interim CMO · na zavolanou</div>
+      <h1 class="tz-hero-name">Tomáš<br><em>Zahradník</em></h1>
+
+      <div class="tz-hero-role-row">
+        <span class="tz-role-badge tz-role-badge-primary">Řízení marketingu</span>
+        <span class="tz-role-badge tz-role-badge-secondary">Interim CMO</span>
+        <span class="tz-role-badge tz-role-badge-secondary">Mentoring</span>
+      </div>
+
+      <p class="tz-hero-bio">
+        <strong>Řídím marketing pro firmy a mentoruju jednotlivce</strong> – bez nutnosti hledat CMO na full-time.
+        Připojím se, rychle se zorientuji a zapojím do týmu. Rád přebírám zodpovědnost, stejně tak dávám slovo ostatním
+        a naslouchám. Marketing stavím na strategii a datech, ale vím, že za každým číslem jsou lidi –
+        v týmu i na druhé straně obrazovky.
+      </p>
+
+      <div class="tz-capacity-row">
+        <span class="tz-avail-dot"></span>
+        <span class="tz-capacity-label">Aktuálně dostupný</span>
+        <div class="tz-capacity-bar-wrap">
+          <div class="tz-capacity-bar"></div>
+        </div>
+        <span class="tz-capacity-value">25 % kapacity</span>
+      </div>
+
+      <div class="tz-contact-pills">
+        <a href="mailto:info@tomaszahradnik.com" class="tz-pill">
+          <svg class="tz-pill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+          info@tomaszahradnik.com
+        </a>
+        <a href="tel:+420774587771" class="tz-pill">
+          <svg class="tz-pill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.7 12.09 19.79 19.79 0 0 1 1.61 3.5 2 2 0 0 1 3.6 1.3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l.94-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +420 774 587 771
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="tz-inner">
+
+    <!-- ═══ CO DĚLÁM ═══ -->
+    <section class="tz-section" id="tz-sec-services">
+      <div class="tz-pillars-wrap">
+        <p class="tz-pillars-heading">Dávám marketingu řád</p>
+        <p class="tz-pillars-subheading">díky 4 pilířům, které společně postavíme.</p>
+        <div class="tz-pillars-grid">
+          <div class="tz-pillar-card">
+            <div class="tz-pillar-num">1.</div>
+            <div class="tz-pillar-card-name">Marketingový rozpočet</div>
+            <div class="tz-pillar-card-desc">kam a kolik investovat</div>
+            <div class="tz-pillar-card-expand">Nastavíme, kam peníze skutečně jdou – rozdělíme rozpočet mezi kanály, formáty a fáze. Žádné dohady, jasná čísla s odůvodněním.</div>
+          </div>
+          <div class="tz-pillar-card">
+            <div class="tz-pillar-num">2.</div>
+            <div class="tz-pillar-card-name">Marketingová strategie</div>
+            <div class="tz-pillar-card-desc">jak a ke komu mluvit</div>
+            <div class="tz-pillar-card-expand">Definujeme cílové skupiny, polohu na trhu a klíčová sdělení. Strategie, které dává smysl lidem v týmu i v boardroomu.</div>
+          </div>
+          <div class="tz-pillar-card">
+            <div class="tz-pillar-num">3.</div>
+            <div class="tz-pillar-card-name">Publikační plán</div>
+            <div class="tz-pillar-card-desc">kdy a kde komunikovat</div>
+            <div class="tz-pillar-card-expand">Vytvoříme obsah a kalendář, který tým zvládne dodržet. Konzistence je základ – ne perfektní kampaně jednou za čtvrt roku.</div>
+          </div>
+          <div class="tz-pillar-card">
+            <div class="tz-pillar-num">4.</div>
+            <div class="tz-pillar-card-name">Projektové řízení</div>
+            <div class="tz-pillar-card-desc">kdo a co dělá</div>
+            <div class="tz-pillar-card-expand">Nastavíme procesy, role a nástroje. Marketing přestane stát na jednom člověku – tým ví, co dělá, a výsledky jsou měřitelné.</div>
+          </div>
+        </div>
+        <p class="tz-pillars-closing">Na úvodním setkání si řekneme, jaké jsou potřeby, co už máte a naopak. Podle toho nastavíme žitelný postup.</p>
+        <a href="#tz-sec-pricing" class="tz-pillars-cta">
+          Pojďme spolupracovat
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <div class="tz-logo-marquee-outer">
+          <div class="tz-logo-marquee-row">
+            <div class="tz-logo-marquee-track">
+              <div class="tz-mq-logo"><img src="https://gramino.cz/wp-content/uploads/2025/01/lyopotraviny.svg" alt="Lyo Potraviny"></div>
+              <div class="tz-mq-logo"><img src="https://www.somfy.cz/common/img/minisites/cz_v5/cz_v5_170002510/logo/labona_tm_digital_on_light_background_RGB.PNG" alt="Labona"></div>
+              <div class="tz-mq-logo"><img src="https://cdn.myshoptet.com/usr/www.pokojicky-tepe.cz/user/logos/1200______1200__blank_edit2-2.png" alt="Pokojíčky TEPE"></div>
+              <div class="tz-mq-logo"><img src="https://viruzin.czechvirus.cz/wp-content/uploads/2021/02/logo-czech-virus.png" alt="Czech Virus"></div>
+              <div class="tz-mq-logo"><img src="https://skinnersfootwear.eu/cdn/shop/files/logo-Skinners-_RGB_-Black.jpg?height=628&pad_color=fff&v=1716363105&width=1200" alt="Skinners"></div>
+              <div class="tz-mq-logo"><img src="https://mubite.com/site-images/global/logo.webp" alt="Mubite" style="filter:grayscale(100%) brightness(0) opacity(0.5);"></div>
+              <div class="tz-mq-logo"><img src="https://www.lifechi.cz/storage/app/uploads/public/67e/3c3/622/67e3c362202ac776977564.png" alt="Lifechi"></div>
+              <div class="tz-mq-logo"><img src="https://www.vitalvibe.eu/themes/vitalvibe/code/svg/logo2.svg" alt="VitalVibe"></div>
+              <div class="tz-mq-logo"><img src="https://static.nofluffjobs.com/companies/logos/original/frontman_logo_ctverec_cerne_na_bilem_pozadi_20220420_081928.jpg" alt="Frontman"></div>
+              <div class="tz-mq-logo"><img src="https://www.semix.cz/www/upload/logo/20210602103919985.png" alt="Semix"></div>
+              <div class="tz-mq-logo"><img src="https://podniknito.cz/themes/custom/podniknito_theme/img/logo.png" alt="Podniknito"></div>
+              <div class="tz-mq-logo"><img src="https://cdn.myshoptet.com/usr/www.movle.clothing/user/logos/movle125x50.svg" alt="Movle"></div>
+              <div class="tz-mq-logo"><img src="https://omelixir.com/cdn/shop/files/logo_omelixir-zlate.png?v=1744819763&width=120" alt="Omelixir"></div>
+              <div class="tz-mq-logo"><img src="https://colectio-dist.fra1.digitaloceanspaces.com/production/20260413a/images/logo-full-color.svg" alt="Colectio"></div>
+              <div class="tz-mq-logo"><img src="https://hezkey.cz/img/static/brand/hezkey-logo.svg" alt="Hezkey"></div>
+              <!-- kopie -->
+              <div class="tz-mq-logo"><img src="https://gramino.cz/wp-content/uploads/2025/01/lyopotraviny.svg" alt="Lyo Potraviny"></div>
+              <div class="tz-mq-logo"><img src="https://www.somfy.cz/common/img/minisites/cz_v5/cz_v5_170002510/logo/labona_tm_digital_on_light_background_RGB.PNG" alt="Labona"></div>
+              <div class="tz-mq-logo"><img src="https://cdn.myshoptet.com/usr/www.pokojicky-tepe.cz/user/logos/1200______1200__blank_edit2-2.png" alt="Pokojíčky TEPE"></div>
+              <div class="tz-mq-logo"><img src="https://viruzin.czechvirus.cz/wp-content/uploads/2021/02/logo-czech-virus.png" alt="Czech Virus"></div>
+              <div class="tz-mq-logo"><img src="https://skinnersfootwear.eu/cdn/shop/files/logo-Skinners-_RGB_-Black.jpg?height=628&pad_color=fff&v=1716363105&width=1200" alt="Skinners"></div>
+              <div class="tz-mq-logo"><img src="https://mubite.com/site-images/global/logo.webp" alt="Mubite" style="filter:grayscale(100%) brightness(0) opacity(0.5);"></div>
+              <div class="tz-mq-logo"><img src="https://www.lifechi.cz/storage/app/uploads/public/67e/3c3/622/67e3c362202ac776977564.png" alt="Lifechi"></div>
+              <div class="tz-mq-logo"><img src="https://www.vitalvibe.eu/themes/vitalvibe/code/svg/logo2.svg" alt="VitalVibe"></div>
+              <div class="tz-mq-logo"><img src="https://static.nofluffjobs.com/companies/logos/original/frontman_logo_ctverec_cerne_na_bilem_pozadi_20220420_081928.jpg" alt="Frontman"></div>
+              <div class="tz-mq-logo"><img src="https://www.semix.cz/www/upload/logo/20210602103919985.png" alt="Semix"></div>
+              <div class="tz-mq-logo"><img src="https://podniknito.cz/themes/custom/podniknito_theme/img/logo.png" alt="Podniknito"></div>
+              <div class="tz-mq-logo"><img src="https://cdn.myshoptet.com/usr/www.movle.clothing/user/logos/movle125x50.svg" alt="Movle"></div>
+              <div class="tz-mq-logo"><img src="https://omelixir.com/cdn/shop/files/logo_omelixir-zlate.png?v=1744819763&width=120" alt="Omelixir"></div>
+              <div class="tz-mq-logo"><img src="https://colectio-dist.fra1.digitaloceanspaces.com/production/20260413a/images/logo-full-color.svg" alt="Colectio"></div>
+              <div class="tz-mq-logo"><img src="https://hezkey.cz/img/static/brand/hezkey-logo.svg" alt="Hezkey"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ ZKUŠENOSTI ═══ -->
+    <section class="tz-section" id="tz-sec-exp">
+      <div class="tz-section-header">
+        <h2 class="tz-section-title">Pracovní zkušenosti</h2>
+      </div>
+
+      <div class="tz-timeline">
+
+        <div class="tz-timeline-item">
+          <div class="tz-timeline-dot" style="background: #4CAF50; box-shadow: 0 0 0 2px #81C784;"></div>
+          <div class="tz-job-card" style="border-color: #C8E6C9;">
+            <div class="tz-job-meta">
+              <span class="tz-job-company">Externí marketingový ředitel – freelance</span>
+              <span class="tz-job-dates" style="background: #E8F5E9; color: #2E7D32; border-color: #C8E6C9;">Listopad 2024 – současnost</span>
+            </div>
+            <div class="tz-job-role">Interim CMO · na zavolanou</div>
+            <p class="tz-job-story">
+              Po Skinners jsem se rozhodl jít vlastní cestou. Aktuálně řídím marketing pro jednotky firem
+              jako Interim CMO – vstupuji do týmů, stavím nebo upravuji strategie a zůstávám tak dlouho,
+              jak je potřeba. Pracuju na projektech souběžně, proto mám stále volnou část kapacity.
+            </p>
+            <div class="tz-job-results">
+              <span class="tz-result-tag" style="background: #E8F5E9; color: #2E7D32; border-color: #C8E6C9;">25 % kapacity volné</span>
+              <span class="tz-result-tag">Strategie</span>
+              <span class="tz-result-tag">Vedení týmů</span>
+              <span class="tz-result-tag">Mentoring</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tz-timeline-item">
+          <div class="tz-timeline-dot"></div>
+          <div class="tz-job-card">
+            <div class="tz-job-meta">
+              <span class="tz-job-company">Skinners</span>
+              <span class="tz-job-dates">Září 2023 – Říjen 2024</span>
+            </div>
+            <div class="tz-job-role">Head of Marketing</div>
+            <p class="tz-job-story">
+              Tvořil jsem marketingovou strategii, implementoval Asanu pro celý tým a uváděl kolekce barefoot bot na trh.
+              Realizoval jsem desítky kampaní, řídil marketing i IT tým a zajistil výběr a celý
+              <strong>přechod e-commerce platformy z Prestashopu na Shopify</strong>.
+            </p>
+            <div class="tz-job-results">
+              <span class="tz-result-tag">Shopify migrace</span>
+              <span class="tz-result-tag">Asana implementace</span>
+              <span class="tz-result-tag">MKT + IT leadership</span>
+              <span class="tz-result-tag">Produktové launche</span>
+            </div>
+          </div>
+          <!-- Inline reference -->
+          <div class="tz-inline-ref">
+            <svg class="tz-inline-ref-quote" width="24" height="18" viewBox="0 0 24 18" fill="currentColor"><path d="M0 18V11.1C0 7.7 1 4.9 3 2.7 5 .9 7.7 0 11.1 0v3.3C9.3 3.3 7.9 3.9 6.9 5c-1 1.1-1.5 2.5-1.5 4.2H9V18H0zm13.5 0V11.1c0-3.4 1-6.2 3-8.4C18.5.9 21.2 0 24.6 0v3.3c-1.8 0-3.2.6-4.2 1.7-1 1.1-1.5 2.5-1.5 4.2H22.5V18H13.5z"/></svg>
+            <p class="tz-inline-ref-text">Rád bych Tomášovi vyjádřil své uznání za jeho přínos pro naši organizaci. Během svého působení prokázal schopnost vytvářet a implementovat marketingové strategie, které podpořily naši obchodní činnost. Jeho znalost problematiky a rozhodování v oblasti marketingových aktivit nám pomohlo posunout se vpřed.</p>
+            <p class="tz-inline-ref-text" style="margin-top:0.75rem;">Oceňuji jeho úsilí při správě a optimalizaci marketingového rozpočtu. Doporučení na úrovni chybějících elementů brandové strategie byla zásadní pro další kroky naší společnosti. Nemohu opomenout ani jeho znalosti při změně webové platformy.</p>
+            <p class="tz-inline-ref-text" style="margin-top:0.75rem;">Jeho účast na strategických projektech a jeho profesionalita, upřímnost a otevřenost byla v mnoha případech neocenitelná.</p>
+            <div class="tz-inline-ref-author">
+              <div class="tz-inline-ref-logo" style="border-radius:50%;width:36px;height:36px;overflow:hidden;padding:0;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRarH8vBsFkhiWnyyR_pKa8njUWiSnjW4hXAQ&s" alt="Jiří Čírtek" style="width:36px;height:36px;object-fit:cover;display:block;">
+              </div>
+              <div>
+                <span class="tz-inline-ref-name">Ing. Jiří Čírtek</span>
+                <span class="tz-inline-ref-role">CEO · Skinners</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tz-timeline-item">
+          <div class="tz-timeline-dot"></div>
+          <div class="tz-job-card">
+            <div class="tz-job-meta">
+              <span class="tz-job-company">Lesensky.cz Agency</span>
+              <span class="tz-job-dates">Březen – Srpen 2023</span>
+            </div>
+            <div class="tz-job-role">Senior UX Designer</div>
+            <p class="tz-job-story">
+              Tvořil jsem webdesign pro klienty agentury, pečoval o klientské vztahy a aktivně budoval interní procesy, které agentuře pomáhaly pracovat efektivněji.
+            </p>
+            <div class="tz-job-results">
+              <span class="tz-result-tag">Webdesign</span>
+              <span class="tz-result-tag">Interní procesy</span>
+              <span class="tz-result-tag">Klientský servis</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tz-timeline-item">
+          <div class="tz-timeline-dot"></div>
+          <div class="tz-job-card">
+            <div class="tz-job-meta">
+              <span class="tz-job-company">Labona</span>
+              <div style="display:flex;gap:0.4rem;flex-wrap:wrap;">
+                <span class="tz-job-dates">Březen 2018 – 2023</span>
+                <span class="tz-job-dates" style="background:var(--surface-alt);color:var(--primary);border-color:#C4A8E8;">4 roky jako CMO</span>
+              </div>
+            </div>
+            <div class="tz-job-role">CMO / Marketingový ředitel</div>
+            <p class="tz-job-story">
+              Čtyři roky jsem byl CMO a řídil marketing firmy se <strong>zakázkovým stíněním na míru</strong> na <strong>5 trzích EU</strong>.
+              Stavěl jsem rozpočty, vedl tým, dohlížel na IT i zákaznickou podporu.
+              Redesignem webu jsem zvedl konverze, snížil náklady na akvizici zákazníka
+              a pomohl firmě k <strong>dvojciferném růstu obratu</strong>.
+            </p>
+            <div class="tz-job-results">
+              <span class="tz-result-tag">5 EU trhů</span>
+              <span class="tz-result-tag">Dvojciferný růst obratu</span>
+              <span class="tz-result-tag">Nižší CPA</span>
+              <span class="tz-result-tag">Konverzní redesign</span>
+              <span class="tz-result-tag">Vícemilionové rozpočty</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tz-timeline-item">
+          <div class="tz-timeline-dot"></div>
+          <div class="tz-job-card">
+            <div class="tz-job-meta">
+              <span class="tz-job-company">Vlastní projekty a freelance</span>
+              <span class="tz-job-dates">2012 – současnost</span>
+            </div>
+            <div class="tz-job-role">Zakladatel · Designer · Developer</div>
+            <p class="tz-job-story">
+              Podnikám od roku 2012. Začínal jsem v lavici ve škole – tvořil e-shopy, zajišťoval logistiku,
+              balil a odesílal balíčky a budoval vizuální identity pro sebe i klienty.
+              Protože mě klienti hodnotili podle „líbí – nelíbí", začal jsem se víc zajímat o uživatelskou zkušenost,
+              testování a UX jako obor. Mám za sebou kvantitativní i kvalitativní výzkumy a desítky hloubkových rozhovorů.
+            </p>
+            <div class="tz-freelance-items">
+              <a href="https://www.tozame.cz" target="_blank" rel="noopener" class="tz-freelance-item tz-freelance-item-link">
+                <div><div class="tz-freelance-item-name">Tozame.cz</div><div class="tz-freelance-item-desc">Japonská keramika · 600+ objednávek, 850 tis. CZK za prvních 6 měsíců · 2022</div></div>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;color:var(--primary-light);margin-left:auto;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a href="https://www.dietsystem.cz" target="_blank" rel="noopener" class="tz-freelance-item tz-freelance-item-link">
+                <div><div class="tz-freelance-item-name">DietSystem <span style="font-weight:400;color:var(--text-muted);font-size:0.72rem;">2016–2021</span></div><div class="tz-freelance-item-desc">Aplikace pro nutriční terapeuty · stovky uživatelů + školy po ČR</div></div>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;color:var(--primary-light);margin-left:auto;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <div class="tz-freelance-item">
+                <div><div class="tz-freelance-item-name">Get Neway</div><div class="tz-freelance-item-desc">Prodejna zdravé výživy a pečiva · retail i online · 2015–2017</div></div>
+              </div>
+              <a href="https://www.jugglequip.com" target="_blank" rel="noopener" class="tz-freelance-item tz-freelance-item-link">
+                <div><div class="tz-freelance-item-name">Jugglequip</div><div class="tz-freelance-item-desc">Žonglérské vybavení · projekt předaný přednímu světovému žonglérovi · aktivní dodnes · 2012 – současnost</div></div>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;color:var(--primary-light);margin-left:auto;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <div class="tz-freelance-item">
+                <div><div class="tz-freelance-item-name">J-SLIDING</div><div class="tz-freelance-item-desc">Patentované žonglérské hulky J-SLIDES · festivaly po Evropě + celosvětový prodej · 2012–2016</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══ VZDĚLÁNÍ aROZVOJ ═══ -->
+    <section class="tz-section" id="tz-sec-edu">
+      <div class="tz-section-header">
+        <h2 class="tz-section-title">Vzdělání a rozvoj</h2>
+      </div>
+
+      <div class="tz-edu-grid">
+        <details class="tz-collapsible">
+          <summary>
+            <div class="tz-collapsible-header">
+              <span class="tz-collapsible-title">Absolvovaná školení</span>
+              <span class="tz-collapsible-subtitle">Průběžně se vzdělávám od nejlepších v oboru – Jan Kvasnička, Pavel Ungr, Jan Tichý a další. Přes 40 kurzů a seminářů.</span>
+            </div>
+            <svg class="tz-collapsible-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="tz-collapsible-body">
+            <div class="tz-training-group">
+              <div class="tz-training-group-label">Analytika a data</div>
+              <div class="tz-training-row"><span class="tz-training-row-topic">Google Analytics 4 pro pokročilé</span><span class="tz-training-row-lector">Jan Tichý</span></div>
+              <div class="tz-training-row"><span class="tz-training-row-topic">Úvod do Google Analytics 4</span><span class="tz-training-row-lector">Jan Tichý</span></div>
+              <div class="tz-training-row"><span class="tz-training-row-topic">Google Analytics pro pokročilé</span><span class="tz-training-row-lector">Tomáš Baxa</span></div>
+              <div class="tz-training-row"><span class="tz-training-row-topic">Webová analytika ve světě bez dat</span><span class="tz-training-row-lector">Honza Tichý</span></div>
+              <div class="tz-training-row"><span class="tz-training-row-topic">Google Data Studio pro pokročilé (2×)</span><span class="tz-training-row-lector">Tomáš Hanáček</span></div>
+              <div class="tz-training-row"><span class="tz-training-row-topic">Google Data Studio pro začátečníky</span><span class="tz-training-row-lector">Tomáš Hanáček</span></div>
+              <div class="tz-training-row"><span class="tz-training-row-topic">Úvod do Google Tag Manageru</span><span class="tz-training-row-lector">André Heller</span></div>
+              <div class="tz-training-row"><span class="tz-training-row-topic">Jak nastavit GTM právně správně</span><span class="tz-training-row-lector">Miroslav Kolařík</span></div>
+            </div>
+            <div class="tz-training-group">
+              <div class="tz-training-group-label">SEO a obsah</div>
+              <div class="tz-training-row"><span class="tz-training-row-topic">SEO je proces, ne jednorázovka</span><span class="tz-training-row-lector">Pavel Ungr</span></div>
+              <div class="tz-training-row"><span class="tz-training-row-topic">Analýza klíčových slov</span><span class="tz-training-row-lector">Pavel Ungr</span></div>
+              <div class="tz-training-row"><span class="tz-training-row-topic">SEO analýza konkurence</span><span class="tz-training-row-lector">Pavel Ungr</span></div>
+              <div class="tz-training-row"><span class="tz-training-row-topic">SEO audit</span><span class="tz-training-row-lector">Zdeněk Dvořák</span></div>
+              <div class="tz-training-row"><span class="tz-training-row-topic">Linkbuilding</span><span class="tz-training-row-lector">Zdeněk Dvořák</span></div>
+              <div class="tz-training-row"><span class="tz-training-row-topic">Jak na SEO analýzy webů na Shoptetu</span><span class="tz-training-row-lector">Pavel Ungr</span></div>
+              <div class="tz-training-row"><span class="tz-training-row-topic">Které e-shopové řešení má nejlepší SEO</span><span class="tz-training-row-lector">Pavel Ungr</span></div>
+            </div>
+            <div class="tz-training-group">
+              <div class="tz-training-group-label">Výkonnostní marketing</div>
+              <div class="tz-training-row"><span class="tz-training-row-topic">Facebook reklama pro pokročilé</span><span class="tz-training-row-lector">Honza Bartoš</span></div>
+              <div class="tz-training-row"><span class="tz-training-row-topic">Facebook výkonnostní reklama pro e-shopy</span><span class="tz-training-row-lector">Honza Bartoš</span></div>
+              <div class="tz-training-row"><span class="tz-training-row-topic">Instagram a Facebook reklamy</span><span class="tz-training-row-lector">Marie Venclíčková</span></div>
+              <div class="tz-training-row"><span class="tz-training-row-topic">Jak nastavit online marketingovou strategii</span><span class="tz-training-row-lector">Jan Černý</span></div>
+              <div class="tz-training-row"><span class="tz-training-row-topic">Jak řídit digitální marketing a lépe prodávat online</span><span class="tz-training-row-lector">Pavel Weber</span></div>
+              <div class="tz-training-row"><span class="tz-training-row-topic">Brand vs výkon na sociálních sítích</span><span class="tz-training-row-lector">Jakub Dresler</span></div>
+              <div class="tz-training-row"><span class="tz-training-row-topic">Případová studie Kytar a Roivenue: Jak ušetřit v marketingu</span><span class="tz-training-row-lector">—</span></div>
+            </div>
+            <div class="tz-training-group">
+              <div class="tz-training-group-label">Projektové řízení a procesy</div>
+              <div class="tz-training-row"><span class="tz-training-row-topic">Projektové řízení v Asaně prakticky (3×)</span><span class="tz-training-row-lector">Jan Kvasnička</span></div>
+              <div class="tz-training-row"><span class="tz-training-row-topic">Projektové řízení e-shopů</span><span class="tz-training-row-lector">Jan Kvasnička</span></div>
+              <div class="tz-training-row"><span class="tz-training-row-topic">Správné cíle pro růst projektu pomocí OKR</span><span class="tz-training-row-lector">Jan Kvasnička</span></div>
+              <div class="tz-training-row"><span class="tz-training-row-topic">Strategické plánování e-shopu a marketingu</span><span class="tz-training-row-lector">Jan Kvasnička</span></div>
+              <div class="tz-training-row"><span class="tz-training-row-topic">Design systémy a Style Guide pro e-shop</span><span class="tz-training-row-lector">Jan Kvasnička</span></div>
+              <div class="tz-training-row"><span class="tz-training-row-topic">Jak být kvalitním šéfem svým lidem</span><span class="tz-training-row-lector">Lenka Fasterová</span></div>
+            </div>
+            <div class="tz-training-group">
+              <div class="tz-training-group-label">E-commerce a konverze</div>
+              <div class="tz-training-row"><span class="tz-training-row-topic">Optimalizace objednávkového procesu</span><span class="tz-training-row-lector">Jan Kvasnička</span></div>
+              <div class="tz-training-row"><span class="tz-training-row-topic">Optimalizace responzivní verze objednávkového procesu</span><span class="tz-training-row-lector">Jan Kvasnička</span></div>
+              <div class="tz-training-row"><span class="tz-training-row-topic">Optimalizace e-shopu pro zahraniční trhy</span><span class="tz-training-row-lector">Jan Kvasnička</span></div>
+              <div class="tz-training-row"><span class="tz-training-row-topic">Obchodník před webkamerou</span><span class="tz-training-row-lector">Dan Kouřil</span></div>
+              <div class="tz-training-row"><span class="tz-training-row-topic">E-commerce day · E-Business Forum 2019</span><span class="tz-training-row-lector">—</span></div>
+            </div>
+            <div class="tz-training-group">
+              <div class="tz-training-group-label">Brand a expanze</div>
+              <div class="tz-training-row"><span class="tz-training-row-topic">Jak vybudovat značku</span><span class="tz-training-row-lector">Pavel Cahlík</span></div>
+              <div class="tz-training-row"><span class="tz-training-row-topic">Jak (s)právně tvořit a chránit značku</span><span class="tz-training-row-lector">Petra Dolejšová</span></div>
+              <div class="tz-training-row"><span class="tz-training-row-topic">Expanze do zahraničí · EU Day Německo · EU Day Polsko</span><span class="tz-training-row-lector">APEK</span></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="tz-collapsible">
+          <summary>
+            <div class="tz-collapsible-header">
+              <span class="tz-collapsible-title">Knihy</span>
+              <span class="tz-collapsible-subtitle">Čtu aktivně – marketing, psychologie, byznys, biografie, sci-fi. Celý seznam přečtených knih na Goodreads.</span>
+            </div>
+            <svg class="tz-collapsible-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="tz-collapsible-body">
+            <div class="tz-books-list">
+              <div class="tz-book-item"><span>Myšlení, rychlé a pomalé</span><span class="tz-book-author">Kahneman</span></div>
+              <div class="tz-book-item"><span>Atomové návyky</span><span class="tz-book-author">James Clear</span></div>
+              <div class="tz-book-item"><span>Začněte s proč</span><span class="tz-book-author">Simon Sinek</span></div>
+              <div class="tz-book-item"><span>Budování značky StoryBrand</span><span class="tz-book-author">Donald Miller</span></div>
+              <div class="tz-book-item"><span>Tohle je marketing!</span><span class="tz-book-author">Seth Godin</span></div>
+              <div class="tz-book-item"><span>Fialová kráva</span><span class="tz-book-author">Seth Godin</span></div>
+              <div class="tz-book-item"><span>Zbraně vlivu</span><span class="tz-book-author">Robert Cialdini</span></div>
+              <div class="tz-book-item"><span>Jak stvořit pecku na trhu</span><span class="tz-book-author">Jonah Berger</span></div>
+              <div class="tz-book-item"><span>Jak drahé je zdarma</span><span class="tz-book-author">Dan Ariely</span></div>
+              <div class="tz-book-item"><span>Nikdy nedělej kompromis</span><span class="tz-book-author">Chris Voss</span></div>
+              <div class="tz-book-item"><span>Čtyřhodinový pracovní týden</span><span class="tz-book-author">Tim Ferriss</span></div>
+              <div class="tz-book-item"><span>Hluboká práce</span><span class="tz-book-author">Cal Newport</span></div>
+              <div class="tz-book-item"><span>Od nuly k jedničce</span><span class="tz-book-author">Peter Thiel</span></div>
+              <div class="tz-book-item"><span>Jak z dobré firmy udělat skvělou</span><span class="tz-book-author">Jim Collins</span></div>
+              <div class="tz-book-item"><span>Esencialismus</span><span class="tz-book-author">Greg McKeown</span></div>
+              <div class="tz-book-item"><span>Lean Startup</span><span class="tz-book-author">Eric Ries</span></div>
+              <div class="tz-book-item"><span>Hooked</span><span class="tz-book-author">Nir Eyal</span></div>
+              <div class="tz-book-item"><span>$100M Offers</span><span class="tz-book-author">Alex Hormozi</span></div>
+              <div class="tz-book-item"><span>The Mom Test</span><span class="tz-book-author">Rob Fitzpatrick</span></div>
+              <div class="tz-book-item"><span>Obviously Awesome</span><span class="tz-book-author">April Dunford</span></div>
+              <div class="tz-book-item"><span>Traction</span><span class="tz-book-author">Weinberg &amp; Mares</span></div>
+            </div>
+            <a href="https://www.goodreads.com/tomaszahradnik" target="_blank" rel="noopener" class="tz-goodreads-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              Celý seznam na Goodreads
+            </a>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ═══ DOVEDNOSTI ═══ -->
+    <section class="tz-section" id="tz-sec-skills">
+      <div class="tz-section-header">
+        <h2 class="tz-section-title">Dovednosti a nástroje</h2>
+      </div>
+      <div class="tz-tool-cloud">
+
+        <!-- AI – nejvyšší relevance aktuálně -->
+        <div class="tz-tool-item tz-tool-item-lg">
+          <span class="tz-tool-logo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>
+          <span class="tz-tool-name">Vibecoding (Claude Code)</span>
+        </div>
+        <div class="tz-tool-item tz-tool-item-lg">
+          <span class="tz-tool-logo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><circle cx="9" cy="10" r="1" fill="currentColor"/><circle cx="12" cy="10" r="1" fill="currentColor"/><circle cx="15" cy="10" r="1" fill="currentColor"/></svg></span>
+          <span class="tz-tool-name">Custom ChatGPT</span>
+        </div>
+        <div class="tz-tool-item tz-tool-item-lg">
+          <span class="tz-tool-logo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"/><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"/></svg></span>
+          <span class="tz-tool-name">Perplexity AI</span>
+        </div>
+        <div class="tz-tool-item">
+          <span class="tz-tool-logo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+          <span class="tz-tool-name">NotebookLM</span>
+        </div>
+
+        <!-- Design & UX -->
+        <div class="tz-tool-item tz-tool-item-lg">
+          <span class="tz-tool-logo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/><path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"/><path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z"/><path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z"/><path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/></svg></span>
+          <span class="tz-tool-name">Figma</span>
+        </div>
+        <div class="tz-tool-item tz-tool-item-lg">
+          <span class="tz-tool-logo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5"/><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="8.5" x2="22" y2="8.5"/><line x1="2" y1="15.5" x2="22" y2="15.5"/></svg></span>
+          <span class="tz-tool-name">Affinity Designer</span>
+        </div>
+        <div class="tz-tool-item">
+          <span class="tz-tool-logo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8l4 4-4 4"/></svg></span>
+          <span class="tz-tool-name">DaVinci Resolve</span>
+        </div>
+
+        <!-- Analytika -->
+        <div class="tz-tool-item tz-tool-item-lg">
+          <span class="tz-tool-logo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></span>
+          <span class="tz-tool-name">Google Analytics 4</span>
+        </div>
+        <div class="tz-tool-item tz-tool-item-lg">
+          <span class="tz-tool-logo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
+          <span class="tz-tool-name">Looker Studio</span>
+        </div>
+        <div class="tz-tool-item tz-tool-item-lg">
+          <span class="tz-tool-logo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></span>
+          <span class="tz-tool-name">Google Tag Manager</span>
+        </div>
+        <div class="tz-tool-item">
+          <span class="tz-tool-logo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2c-1.5 3-3 5-3 8a3 3 0 0 0 6 0c0-3-1.5-5-3-8z"/><path d="M9 14c-2 1-4 3-4 5h14c0-2-2-4-4-5"/></svg></span>
+          <span class="tz-tool-name">Hotjar</span>
+        </div>
+        <div class="tz-tool-item">
+          <span class="tz-tool-logo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12h4l3-9 4 18 3-9h6"/></svg></span>
+          <span class="tz-tool-name">Microsoft Clarity</span>
+        </div>
+
+        <!-- Výkonnostní marketing -->
+        <div class="tz-tool-item tz-tool-item-lg">
+          <span class="tz-tool-logo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
+          <span class="tz-tool-name">Google Ads</span>
+        </div>
+        <div class="tz-tool-item tz-tool-item-lg">
+          <span class="tz-tool-logo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8"/><path d="M12 4c2.2 2 4 4.7 4 8s-1.8 6-4 8"/><path d="M12 4c-2.2 2-4 4.7-4 8s1.8 6 4 8"/></svg></span>
+          <span class="tz-tool-name">Meta Ads Manager</span>
+        </div>
+
+        <!-- Projektové řízení -->
+        <div class="tz-tool-item tz-tool-item-lg">
+          <span class="tz-tool-logo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="5" r="3"/><circle cx="5" cy="17" r="3"/><circle cx="19" cy="17" r="3"/></svg></span>
+          <span class="tz-tool-name">Asana</span>
+        </div>
+        <div class="tz-tool-item">
+          <span class="tz-tool-logo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span class="tz-tool-name">ClickUp</span>
+        </div>
+        <div class="tz-tool-item">
+          <span class="tz-tool-logo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span>
+          <span class="tz-tool-name">Miro</span>
+        </div>
+
+        <!-- E-commerce -->
+        <div class="tz-tool-item tz-tool-item-lg">
+          <span class="tz-tool-logo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span>
+          <span class="tz-tool-name">Shopify</span>
+        </div>
+        <div class="tz-tool-item">
+          <span class="tz-tool-logo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M9 12h6M9 8h2a2 2 0 1 1 0 4H9v4"/></svg></span>
+          <span class="tz-tool-name">WordPress / Elementor</span>
+        </div>
+        <div class="tz-tool-item">
+          <span class="tz-tool-logo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+          <span class="tz-tool-name">Shoptet</span>
+        </div>
+        <div class="tz-tool-item">
+          <span class="tz-tool-logo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M8 11h6M11 8v6"/></svg></span>
+          <span class="tz-tool-name">Collabim</span>
+        </div>
+        <div class="tz-tool-item" style="color:var(--text-muted);font-style:italic;">
+          <span class="tz-tool-name">a další</span>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ═══ REFERENCE ═══ -->
+    <section class="tz-section tz-section-fullwidth" id="tz-sec-testimonials">
+      <div class="tz-section-header">
+        <h2 class="tz-section-title">Co říkají klienti</h2>
+      </div>
+      <div class="tz-testimonials-grid">
+
+        <div class="tz-testimonial-card">
+          <svg class="tz-testimonial-quote" width="22" height="16" viewBox="0 0 24 18" fill="currentColor"><path d="M0 18V11.1C0 7.7 1 4.9 3 2.7 5 .9 7.7 0 11.1 0v3.3C9.3 3.3 7.9 3.9 6.9 5c-1 1.1-1.5 2.5-1.5 4.2H9V18H0zm13.5 0V11.1c0-3.4 1-6.2 3-8.4C18.5.9 21.2 0 24.6 0v3.3c-1.8 0-3.2.6-4.2 1.7-1 1.1-1.5 2.5-1.5 4.2H22.5V18H13.5z"/></svg>
+          <div class="tz-testimonial-body">
+            <p class="tz-testimonial-text">Co neměříš, to neřídíš. Tomáš pomáhá našemu trochu punkovýmu marketingovýmu oddělení zavádět zásady, metriky a postupy, díky kterým konečně dokážeme marketing, rozpočty a cíle řídit systematicky – a hlavně vyhodnocovat jejich efektivitu.</p>
+            <p class="tz-testimonial-text" style="margin-top:0.75rem;">Je vidět, že to nedělá poprvé. Spolupráce s ním mě fakt baví – má hlubokou expertízu, ale zároveň umí marketingové principy zjednodušit tak, že jim rozumí i ti, kdo nejsou z oboru. A přesně to jsme potřebovali.</p>
+          </div>
+          <button class="tz-testimonial-toggle" onclick="tzToggleTestimonial(this)">
+            Číst více <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="tz-testimonial-author">
+            <div class="tz-testimonial-avatar"><img src="https://viruzin.czechvirus.cz/wp-content/uploads/2021/02/logo-czech-virus.png" alt="Czech Virus"></div>
+            <div>
+              <div class="tz-testimonial-name">Ondrej Dlugoš</div>
+              <div class="tz-testimonial-role">Co-founder · Czech Virus</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tz-testimonial-card">
+          <svg class="tz-testimonial-quote" width="22" height="16" viewBox="0 0 24 18" fill="currentColor"><path d="M0 18V11.1C0 7.7 1 4.9 3 2.7 5 .9 7.7 0 11.1 0v3.3C9.3 3.3 7.9 3.9 6.9 5c-1 1.1-1.5 2.5-1.5 4.2H9V18H0zm13.5 0V11.1c0-3.4 1-6.2 3-8.4C18.5.9 21.2 0 24.6 0v3.3c-1.8 0-3.2.6-4.2 1.7-1 1.1-1.5 2.5-1.5 4.2H22.5V18H13.5z"/></svg>
+          <div class="tz-testimonial-body">
+            <p class="tz-testimonial-text">Toma jsem poznala díky doporučení jeho úžasné manželky Janičky, která je dlouhodobě ambasadorkou naší značky Lyopotraviny. Janička velmi dobře vnímala, že naše firma stojí na prahu dalšího růstu, a že potřebujeme pomoc s uchopením procesů a systémů, které nás posunou dál.</p>
+            <p class="tz-testimonial-text" style="margin-top:0.75rem;">Naše spolupráce začala tím, že Tomáš detailně navnímal aktuální stav firmy a pomohl nám pojmenovat klíčové potřeby. Sama jsem si jeho roli interně označila jako systémového manažera – přinesl totiž do firmy nejen nadhled, ale také hluboké know-how a jasnou strukturu.</p>
+            <p class="tz-testimonial-text" style="margin-top:0.75rem;">Jedním z největších přínosů bylo zavedení PnL systému a pravidelného sledování finanční stránky firmy. Pomohl nám nastavit plánování rozpočtů i kampaní tak, aby byly strategické a zároveň realistické. Vznikl publikační plán, systém řízení úkolů v Asaně a celkově jsme začali firmu řídit s větší předvídatelností a důrazem na výsledky.</p>
+            <p class="tz-testimonial-text" style="margin-top:0.75rem;">Tomáš má schopnost nejen věci vymyslet a navrhnout, ale také nás je naučit, zaškolit tým nebo doporučit kvalitní odborníky, když je to potřeba. Komunikace s ním je vždy konstruktivní, přátelská a profesionální zároveň. Dokáže naslouchat i vést, tvořit strategii i dotahovat detaily.</p>
+            <p class="tz-testimonial-text" style="margin-top:0.75rem;">Díky naší spolupráci se firmě otevřely nové možnosti a získali jsme stabilitu, která nám umožňuje růst bez chaosu. Spolupráci s Tomem bych doporučila každému, kdo to se svou firmou myslí vážně a chce posunout podnikání velmi rychle a efektivně na vyšší úroveň. Díky za spolupráci.</p>
+          </div>
+          <button class="tz-testimonial-toggle" onclick="tzToggleTestimonial(this)">
+            Číst více <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="tz-testimonial-author">
+            <div class="tz-testimonial-avatar"><img src="https://gramino.cz/wp-content/uploads/2025/01/lyopotraviny.svg" alt="Lyopotraviny"></div>
+            <div>
+              <div class="tz-testimonial-name">Lenka Bláhová</div>
+              <div class="tz-testimonial-role">Majitelka · Lyopotraviny s.r.o.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tz-testimonial-card">
+          <svg class="tz-testimonial-quote" width="22" height="16" viewBox="0 0 24 18" fill="currentColor"><path d="M0 18V11.1C0 7.7 1 4.9 3 2.7 5 .9 7.7 0 11.1 0v3.3C9.3 3.3 7.9 3.9 6.9 5c-1 1.1-1.5 2.5-1.5 4.2H9V18H0zm13.5 0V11.1c0-3.4 1-6.2 3-8.4C18.5.9 21.2 0 24.6 0v3.3c-1.8 0-3.2.6-4.2 1.7-1 1.1-1.5 2.5-1.5 4.2H22.5V18H13.5z"/></svg>
+          <div class="tz-testimonial-body">
+            <p class="tz-testimonial-text">S Tomem jsem měl skvělou zkušenost od samého začátku. Je neskutečně přátelský, empatický a rychle pochopil celou moji situaci. Díky jeho přístupu a know-how, které si za roky nasbíral v marketingu i velkých firmách, jsem ušetřil roky práce a pokroku vmáčknul do pár měsíců.</p>
+            <p class="tz-testimonial-text" style="margin-top:0.75rem;">Hodně oceňuju i to, že se s Tomem dá bavit nejen o byznysu, ale i o životě – vždycky ví, jak to odlehčit, a zároveň vás vrátit zpět na správnou cestu. Díky němu jsem znovu chytil ten správný drive.</p>
+          </div>
+          <button class="tz-testimonial-toggle" onclick="tzToggleTestimonial(this)">
+            Číst více <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="tz-testimonial-author">
+            <div class="tz-testimonial-avatar"><img src="https://cdn.myshoptet.com/usr/www.movle.clothing/user/logos/movle125x50.svg" alt="Movle"></div>
+            <div>
+              <div class="tz-testimonial-name">Dominik Chu Huu</div>
+              <div class="tz-testimonial-role">Founder · Movle</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tz-testimonial-card">
+          <svg class="tz-testimonial-quote" width="22" height="16" viewBox="0 0 24 18" fill="currentColor"><path d="M0 18V11.1C0 7.7 1 4.9 3 2.7 5 .9 7.7 0 11.1 0v3.3C9.3 3.3 7.9 3.9 6.9 5c-1 1.1-1.5 2.5-1.5 4.2H9V18H0zm13.5 0V11.1c0-3.4 1-6.2 3-8.4C18.5.9 21.2 0 24.6 0v3.3c-1.8 0-3.2.6-4.2 1.7-1 1.1-1.5 2.5-1.5 4.2H22.5V18H13.5z"/></svg>
+          <div class="tz-testimonial-body">
+            <p class="tz-testimonial-text">Spolupráce s tebou mi otevřela nové pohledy na řízení e-shopu a efektivnější práci. Oceňuji tvůj přístup – jsi přátelský, nic nevnucuješ a opravdu se snažíš pomoct.</p>
+            <p class="tz-testimonial-text" style="margin-top:0.75rem;">Díky tvým radám a tipům šetřím čas, vyhýbám se zbytečné práci a posouvám svůj e-shop dál. Pomohl jsi mi podívat se na věci jinak, než když jsem byl ponořený jen do svého podnikání. Těším se na další spolupráci!</p>
+          </div>
+          <button class="tz-testimonial-toggle" onclick="tzToggleTestimonial(this)">
+            Číst více <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="tz-testimonial-author">
+            <div class="tz-testimonial-avatar"><img src="https://www.lifechi.cz/storage/app/uploads/public/67e/3c3/622/67e3c362202ac776977564.png" alt="LifeChi"></div>
+            <div>
+              <div class="tz-testimonial-name">Tomáš Měřínský</div>
+              <div class="tz-testimonial-role">Majitel · LifeChi</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+
+  </div><!-- /tz-inner -->
+
+  <!-- ═══ CENA ═══ -->
+  <section class="tz-section" id="tz-sec-pricing">
+    <div class="tz-pricing-hero">
+      <canvas id="tz-pricing-canvas" aria-hidden="true"></canvas>
+      <div class="tz-pricing-hero-inner">
+        <div class="tz-pricing-hero-title">Pojďme spolupracovat</div>
+        <p class="tz-pricing-hero-sub">Za každým projektem jsou lidi – a dobrá spolupráce začíná upřímným rozhovorem. Napište nebo zavolejte, probereme co dává smysl.</p>
+        <div class="tz-pricing-cards">
+          <div class="tz-pricing-card">
+            <div class="tz-pricing-card-label">Jednorázová konzultace</div>
+            <div class="tz-pricing-card-amount">1 750<span class="tz-pricing-card-unit">Kč / hod</span></div>
+            <div class="tz-pricing-card-desc">Marketingová strategie, audit nebo konkrétní problém. Bez závazků, bez kontraktu.</div>
+          </div>
+          <div class="tz-pricing-card">
+            <div class="tz-pricing-card-label">Interim CMO / delší spolupráce</div>
+            <div class="tz-pricing-card-amount" style="font-size: 1.6rem;">Na domluvě</div>
+            <div class="tz-pricing-card-desc">Průběžný mentoring nebo Interim CMO. Při delší spolupráci se vždy domluvíme na lepší ceně.</div>
+          </div>
+        </div>
+        <div class="tz-pricing-cta-row">
+          <a href="mailto:info@tomaszahradnik.com" class="tz-pricing-cta-primary" style="color:#fff;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+            Napište mi
+          </a>
+          <a href="tel:+420774587771" class="tz-pricing-cta-secondary" style="color:#fff;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.7 12.09 19.79 19.79 0 0 1 1.61 3.5 2 2 0 0 1 3.6 1.3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l.94-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +420 774 587 771
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PATIČKA ═══ -->
+  <footer class="tz-footer-strip">
+    <p>© 1994 – 2026 <strong>Navajboval sám sobě Tomáš Zahradník</strong></p>
+    <p>Jsem fyzická osoba (neplátce DPH) zapsaná v Živnostenském rejstříku od 3.&nbsp;8.&nbsp;2012, evidovaná Magistrátem města Brna pod <strong>IČ:&nbsp;00731447</strong></p>
+  </footer>
+
+
+</div><!-- /tz-cv-block -->
+
+<script>
+(function() {
+  // Hero stagger on load
+  var hero = document.getElementById('tz-hero-stagger');
+  if (hero) {
+    requestAnimationFrame(function() {
+      hero.classList.add('tz-loaded');
+      // Animate capacity bar
+      setTimeout(function() {
+        var bar = document.querySelector('.tz-capacity-bar');
+        if (bar) bar.classList.add('tz-bar-loaded');
+      }, 500);
+    });
+  }
+
+  // IntersectionObserver – section reveal
+  var sections = document.querySelectorAll('.tz-cv-block .tz-section');
+  if ('IntersectionObserver' in window) {
+    var sectionObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('tz-visible');
+          sectionObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px 0px 0px' });
+
+    sections.forEach(function(section) {
+      sectionObserver.observe(section);
+    });
+
+    // Fallback: reveal any section already in viewport on load
+    window.addEventListener('load', function() {
+      sections.forEach(function(section) {
+        var rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          section.classList.add('tz-visible');
+        }
+      });
+    });
+  } else {
+    sections.forEach(function(s) { s.classList.add('tz-visible'); });
+  }
+
+  // IntersectionObserver – language bars
+  var langList = document.getElementById('tz-lang-list');
+  if (langList && 'IntersectionObserver' in window) {
+    var langObserver = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) {
+        var bars = langList.querySelectorAll('.tz-lang-bar');
+        bars.forEach(function(bar, i) {
+          var w = parseFloat(bar.getAttribute('data-width') || '1');
+          setTimeout(function() {
+            bar.style.transform = 'scaleX(' + w + ')';
+          }, i * 120);
+        });
+        langObserver.unobserve(langList);
+      }
+    }, { threshold: 0.3 });
+    langObserver.observe(langList);
+  } else if (langList) {
+    langList.querySelectorAll('.tz-lang-bar').forEach(function(bar) {
+      var w = parseFloat(bar.getAttribute('data-width') || '1');
+      bar.style.transform = 'scaleX(' + w + ')';
+    });
+  }
+})();
+
+
+// Testimonial expand/collapse
+function tzToggleTestimonial(btn) {
+  var body = btn.previousElementSibling;
+  var isOpen = body.classList.contains('tz-expanded');
+  body.classList.toggle('tz-expanded', !isOpen);
+  btn.classList.toggle('tz-open', !isOpen);
+  btn.innerHTML = isOpen
+    ? 'Číst více <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>'
+    : 'Skrýt <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>';
+}
+
+// ── Aurora Canvas Mesh Gradient ──────────────────────────────────────────────
+(function () {
+  var canvas = document.getElementById('tz-aurora-canvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var hero = document.querySelector('.tz-hero');
+  var W, H;
+
+  // Palette: primary #6A4C93 + harmonické barvy
+  var COLORS = [
+    { r: 106, g: 76,  b: 147 },  // #6A4C93 primary
+    { r: 139, g: 92,  b: 246 },  // #8B5CF6 violet
+    { r: 76,  g: 29,  b: 149 },  // #4C1D95 deep indigo
+    { r: 167, g: 139, b: 250 },  // #A78BFA lavender
+    { r: 91,  g: 33,  b: 182 },  // #5B21B6 mid violet
+    { r: 196, g: 181, b: 253 },  // #C4B5FD light accent
+  ];
+
+  // Orb = jeden plynulý blob
+  function Orb(i) {
+    var c = COLORS[i % COLORS.length];
+    this.r = c.r; this.g = c.g; this.b = c.b;
+    this.reset();
+  }
+  Orb.prototype.reset = function () {
+    this.x  = 0.2 + Math.random() * 0.7;
+    this.y  = 0.1 + Math.random() * 0.8;
+    this.vx = (Math.random() - 0.5) * 0.00028;
+    this.vy = (Math.random() - 0.5) * 0.00022;
+    this.radius = 0.28 + Math.random() * 0.28;
+    this.alpha  = 0.52 + Math.random() * 0.32;
+  };
+  Orb.prototype.update = function (mx, my) {
+    // Lerp směrem k myši — aktivní pull
+    this.vx += (mx - this.x) * 0.00008;
+    this.vy += (my - this.y) * 0.00008;
+    // Drag
+    this.vx *= 0.97;
+    this.vy *= 0.97;
+    this.x += this.vx;
+    this.y += this.vy;
+    // Bounce
+    if (this.x < 0 || this.x > 1) this.vx *= -1;
+    if (this.y < 0 || this.y > 1) this.vy *= -1;
+    this.x = Math.max(0, Math.min(1, this.x));
+    this.y = Math.max(0, Math.min(1, this.y));
+  };
+
+  var orbs = [];
+  for (var i = 0; i < 6; i++) orbs.push(new Orb(i));
+
+  // Mouse tracking (normalizováno na canvas)
+  var mx = 0.62, my = 0.42;
+  if (hero) {
+    hero.addEventListener('mousemove', function (e) {
+      var r = canvas.getBoundingClientRect();
+      mx = (e.clientX - r.left) / r.width;
+      my = (e.clientY - r.top)  / r.height;
+    }, { passive: true });
+    hero.addEventListener('mouseleave', function () {
+      mx = 0.62; my = 0.42;
+    });
+  }
+
+  function resize() {
+    W = canvas.offsetWidth;
+    H = canvas.offsetHeight;
+    canvas.width  = W;
+    canvas.height = H;
+  }
+  resize();
+  window.addEventListener('resize', resize, { passive: true });
+
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    orbs.forEach(function (o) {
+      if (!reduced) o.update(mx, my);
+
+      var cx = o.x * W;
+      var cy = o.y * H;
+      var rx = o.radius * W;
+      var ry = o.radius * H * 0.85; // mírně elipsa
+
+      var grd = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.max(rx, ry));
+      grd.addColorStop(0,   'rgba(' + o.r + ',' + o.g + ',' + o.b + ',' + o.alpha + ')');
+      grd.addColorStop(0.45,'rgba(' + o.r + ',' + o.g + ',' + o.b + ',' + (o.alpha * 0.6) + ')');
+      grd.addColorStop(1,   'rgba(' + o.r + ',' + o.g + ',' + o.b + ',0)');
+
+      ctx.save();
+      ctx.scale(1, ry / rx);
+      ctx.beginPath();
+      ctx.arc(cx, cy * (rx / ry), rx, 0, Math.PI * 2);
+      ctx.fillStyle = grd;
+      ctx.fill();
+      ctx.restore();
+    });
+
+    // Edge fade — levý okraj plynule mizí do průhledna
+    var fade = ctx.createLinearGradient(0, 0, W * 0.42, 0);
+    fade.addColorStop(0,   'rgba(250,250,248,1)');
+    fade.addColorStop(0.6, 'rgba(250,250,248,0)');
+    ctx.fillStyle = fade;
+    ctx.fillRect(0, 0, W * 0.42, H);
+
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// ── Aurora Canvas — Pricing sekce ────────────────────────────────────────────
+(function () {
+  var canvas = document.getElementById('tz-pricing-canvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var wrap = canvas.parentElement;
+  var W, H;
+
+  var COLORS = [
+    { r: 106, g: 76,  b: 147 },
+    { r: 139, g: 92,  b: 246 },
+    { r: 76,  g: 29,  b: 149 },
+    { r: 167, g: 139, b: 250 },
+    { r: 91,  g: 33,  b: 182 },
+    { r: 196, g: 181, b: 253 },
+  ];
+
+  function Orb(i) {
+    var c = COLORS[i % COLORS.length];
+    this.r = c.r; this.g = c.g; this.b = c.b;
+    this.x  = 0.1 + Math.random() * 0.8;
+    this.y  = 0.1 + Math.random() * 0.8;
+    this.vx = (Math.random() - 0.5) * 0.00025;
+    this.vy = (Math.random() - 0.5) * 0.0002;
+    this.radius = 0.32 + Math.random() * 0.32;
+    this.alpha  = 0.55 + Math.random() * 0.3;
+  }
+  Orb.prototype.update = function (mx, my) {
+    this.vx += (mx - this.x) * 0.00008;
+    this.vy += (my - this.y) * 0.00008;
+    this.vx *= 0.97; this.vy *= 0.97;
+    this.x += this.vx; this.y += this.vy;
+    if (this.x < 0 || this.x > 1) this.vx *= -1;
+    if (this.y < 0 || this.y > 1) this.vy *= -1;
+    this.x = Math.max(0, Math.min(1, this.x));
+    this.y = Math.max(0, Math.min(1, this.y));
+  };
+
+  var orbs = [];
+  for (var i = 0; i < 6; i++) orbs.push(new Orb(i));
+
+  var mx = 0.5, my = 0.5;
+  wrap.addEventListener('mousemove', function (e) {
+    var r = canvas.getBoundingClientRect();
+    mx = (e.clientX - r.left) / r.width;
+    my = (e.clientY - r.top)  / r.height;
+  }, { passive: true });
+  wrap.addEventListener('mouseleave', function () { mx = 0.5; my = 0.5; });
+
+  function resize() {
+    W = canvas.offsetWidth; H = canvas.offsetHeight;
+    canvas.width = W; canvas.height = H;
+  }
+  resize();
+  window.addEventListener('resize', resize, { passive: true });
+
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    orbs.forEach(function (o) {
+      if (!reduced) o.update(mx, my);
+      var cx = o.x * W, cy = o.y * H;
+      var rx = o.radius * W, ry = o.radius * H * 0.85;
+      var grd = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.max(rx, ry));
+      grd.addColorStop(0,    'rgba(' + o.r + ',' + o.g + ',' + o.b + ',' + o.alpha + ')');
+      grd.addColorStop(0.45, 'rgba(' + o.r + ',' + o.g + ',' + o.b + ',' + (o.alpha * 0.55) + ')');
+      grd.addColorStop(1,    'rgba(' + o.r + ',' + o.g + ',' + o.b + ',0)');
+      ctx.save();
+      ctx.scale(1, ry / rx);
+      ctx.beginPath();
+      ctx.arc(cx, cy * (rx / ry), rx, 0, Math.PI * 2);
+      ctx.fillStyle = grd;
+      ctx.fill();
+      ctx.restore();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+
+
+// ── Card tilt (job, pricing, pillar cards) ───────────────────────────────────
+(function () {
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Tilt for job + pricing cards
+  if (!reduced) {
+    document.querySelectorAll('.tz-job-card, .tz-pricing-card').forEach(function (card) {
+      var maxTilt = card.classList.contains('tz-job-card') ? 6 : 8;
+      card.addEventListener('mousemove', function (e) {
+        var r = card.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width  - 0.5;
+        var y = (e.clientY - r.top)  / r.height - 0.5;
+        card.style.transform = 'perspective(700px) rotateX(' + (-y * maxTilt) + 'deg) rotateY(' + (x * maxTilt) + 'deg) translateY(-4px)';
+      }, { passive: true });
+      card.addEventListener('mouseleave', function () {
+        card.style.transform = '';
+      });
+    });
+  }
+
+  // Tilt for pillar cards + mobile click expand
+  var isTouchDevice = ('ontouchstart' in window);
+  document.querySelectorAll('.tz-pillar-card').forEach(function (card) {
+    if (!reduced && !isTouchDevice) {
+      card.addEventListener('mousemove', function (e) {
+        var r = card.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width  - 0.5;
+        var y = (e.clientY - r.top)  / r.height - 0.5;
+        card.style.transform = 'perspective(600px) rotateX(' + (-y * 7) + 'deg) rotateY(' + (x * 7) + 'deg) translateY(-5px)';
+      }, { passive: true });
+      card.addEventListener('mouseleave', function () {
+        card.style.transform = '';
+      });
+    }
+    // Mobile: toggle expand on tap
+    if (isTouchDevice) {
+      card.addEventListener('click', function () {
+        card.classList.toggle('tz-expanded');
+      });
+    }
+  });
+})();
+
+// Cursor spotlight on buttons
+document.querySelectorAll('.tz-pill, .tz-cta-link, .tz-role-badge, .tz-pricing-cta-primary, .tz-pricing-cta-secondary, .tz-pillars-cta').forEach(function(el) {
+  el.addEventListener('mousemove', function(e) {
+    var r = el.getBoundingClientRect();
+    el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    el.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  });
+});
+</script>
