@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PříTOMnost – jednodenní meditační setkání</title>
+  <meta name="description" content="Jednodenní meditační setkání zaměřené na ztišení mysli, návrat do těla a poctivou přítomnost. Zazen, Kinhin, zvuková lázeň a kruhové sdílení s Tomášem Zahradníkem.">
+  <meta name="author" content="Tomáš Zahradník">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pritomnost.tomaszahradnik.com/">
+  <meta property="og:title" content="PříTOMnost – jednodenní meditační setkání">
+  <meta property="og:description" content="Den v komorní atmosféře pro ztišení mysli, návrat do těla a poctivou přítomnost. Zazen, Kinhin, zvuková lázeň, kruhové sdílení.">
+  <meta property="og:image" content="https://tomaszahradnik.com/tomas-zahradnik-interim-cmo.jpg">
+  <meta property="og:locale" content="cs_CZ">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PříTOMnost – jednodenní meditační setkání">
+  <meta name="twitter:description" content="Den v komorní atmosféře pro ztišení mysli, návrat do těla a poctivou přítomnost.">
+  <!-- Robots & Canonical -->
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://pritomnost.tomaszahradnik.com/">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "PříTOMnost – jednodenní meditační setkání",
+    "description": "Jednodenní meditační setkání zaměřené na ztišení mysli, návrat do těla a poctivou přítomnost. Somatické cvičení, Zazen a Kinhin praxe, lehký japonský oběd, zvuková lázeň a kruhové sdílení.",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "startDate": "TBD",
+    "location": {
+      "@type": "Place",
+      "name": "[DOPLNIT]",
+      "address": "[DOPLNIT]"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "888",
+      "priceCurrency": "CZK",
+      "availability": "https://schema.org/LimitedAvailability",
+      "url": "https://pritomnost.tomaszahradnik.com/"
+    },
+    "performer": {
+      "@type": "Person",
+      "name": "Tomáš Zahradník"
+    },
+    "organizer": {
+      "@type": "Person",
+      "name": "Tomáš Zahradník",
+      "email": "info@tomaszahradnik.com"
+    }
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: #FAFAF8; }
+
+    :root {
+      --primary: #6A4C93;
+      --primary-light: #8B6DB5;
+      --primary-dark: #4E3570;
+      --primary-glow: #6A4C9320;
+      --accent: #C4A8E8;
+      --surface: #FAFAF8;
+      --surface-alt: #F3EFF9;
+      --text-primary: #1A1523;
+      --text-secondary: #5C5470;
+      --text-muted: #9B93A8;
+      --border: #E8E0F0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter Tight', sans-serif;
+      color: var(--text-primary);
+      background: var(--surface);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+
+    .wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 96px 0 72px;
+      text-align: center;
+      background: radial-gradient(ellipse at top, var(--surface-alt), var(--surface) 70%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--primary);
+      background: var(--primary-glow);
+      border: 1px solid var(--border);
+      padding: 6px 16px;
+      border-radius: 999px;
+      margin-bottom: 28px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      line-height: 1.08;
+      color: var(--primary-dark);
+      margin-bottom: 20px;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--primary);
+    }
+
+    .hero-sub {
+      font-size: clamp(1.05rem, 2vw, 1.2rem);
+      color: var(--text-secondary);
+      max-width: 560px;
+      margin: 0 auto 40px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      font-family: 'Inter Tight', sans-serif;
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: #fff;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      padding: 16px 40px;
+      border-radius: 999px;
+      text-decoration: none;
+      box-shadow: 0 8px 24px var(--primary-glow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px var(--primary-glow); }
+
+    .hero-meta {
+      margin-top: 24px;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    /* Sections */
+    section { padding: 64px 0; }
+    section + section { border-top: 1px solid var(--border); }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: clamp(1.6rem, 3.5vw, 2.1rem);
+      color: var(--primary-dark);
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    .lede {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 620px;
+      margin: 0 auto 40px;
+      text-align: center;
+    }
+
+    /* Program list */
+    .program-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .program-item {
+      display: flex;
+      gap: 18px;
+      padding: 22px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    .program-num {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .program-item h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: var(--text-primary);
+    }
+
+    .program-item p {
+      color: var(--text-secondary);
+      font-size: 0.96rem;
+    }
+
+    .note-box {
+      margin-top: 32px;
+      padding: 24px;
+      border-left: 3px solid var(--primary);
+      background: var(--surface-alt);
+      border-radius: 0 12px 12px 0;
+      color: var(--text-secondary);
+      font-size: 0.96rem;
+    }
+
+    .note-box strong { color: var(--primary-dark); }
+
+    /* Practical info */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    .info-card {
+      text-align: center;
+      padding: 28px 16px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    .info-card .label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .info-card .value {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--primary-dark);
+    }
+
+    .bring-list {
+      max-width: 480px;
+      margin: 0 auto;
+      list-style: none;
+    }
+
+    .bring-list li {
+      padding: 10px 0 10px 28px;
+      position: relative;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .bring-list li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    /* Guide */
+    .guide {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 20px;
+    }
+
+    .guide-avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--primary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 2rem;
+      color: #fff;
+    }
+
+    .guide h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--primary-dark);
+    }
+
+    .guide p {
+      color: var(--text-secondary);
+      max-width: 600px;
+    }
+
+    /* Final CTA */
+    .final-cta {
+      text-align: center;
+      background: var(--surface-alt);
+    }
+
+    .final-cta .section-title { margin-bottom: 16px; }
+
+    .final-cta .lede { margin-bottom: 32px; }
+
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    footer a { color: var(--primary); text-decoration: none; }
+
+    @media (max-width: 600px) {
+      .hero { padding: 72px 0 56px; }
+      section { padding: 48px 0; }
+      .program-item { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Jednodenní meditační setkání</span>
+      <h1>Návrat do <em>PříTOMnosti</em></h1>
+      <p class="hero-sub">Srdečně Tě zvu na jednodenní meditační setkání zaměřené na ztišení mysli, návrat do těla a poctivou přítomnost. Den v komorní atmosféře, kde získáš prostor zhluboka vydechnout a být tady a teď.</p>
+      <a href="#prihlaska" class="cta-btn">Zajistit si místo</a>
+      <p class="hero-meta">[DOPLNIT DATUM] · [DOPLNIT MÍSTO] · kapacita 8 míst</p>
+    </div>
+  </header>
+
+  <section id="program">
+    <div class="wrap">
+      <h2 class="section-title">Co nás během dne čeká</h2>
+      <div class="program-list">
+        <div class="program-item">
+          <div class="program-num">1</div>
+          <div>
+            <h3>Somatické cvičení</h3>
+            <p>Jemné rozhýbání a uvolnění napětí usazeného v těle.</p>
+          </div>
+        </div>
+        <div class="program-item">
+          <div class="program-num">2</div>
+          <div>
+            <h3>2 bloky Zazen a Kinhin praxe</h3>
+            <p>Ztišení v tradiční japonské meditační praxi vsedě (Zazen) a vědomé chůzi (Kinhin).</p>
+          </div>
+        </div>
+        <div class="program-item">
+          <div class="program-num">3</div>
+          <div>
+            <h3>Lehký japonský oběd</h3>
+            <p>Výživné jídlo připravené v duchu jednoduchosti a čistoty.</p>
+          </div>
+        </div>
+        <div class="program-item">
+          <div class="program-num">4</div>
+          <div>
+            <h3>Zvuková lázeň</h3>
+            <p>Hluboká relaxace za zvuku živých tónů hudebních nástrojů.</p>
+          </div>
+        </div>
+        <div class="program-item">
+          <div class="program-num">5</div>
+          <div>
+            <h3>Kruhové sdílení</h3>
+            <p>Bezpečný prostor pro vše, co v Tobě bude živé.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="note-box">
+        <strong>Žádná předchozí zkušenost s meditací není potřeba.</strong> Veškerou praxí Tě krok za krokem provedu v prostředí, kde vládne přijetí, respekt a klid. Hlavní meditační praxí bude japonský zazen – technika bez-hybného sezení v tichu, kdy se soustředíme na dech a přítomnost. Velký přínos této techniky vnímám primárně přes diskomfort, který otevírá nové perspektivy na život.
+      </div>
+    </div>
+  </section>
+
+  <section id="info">
+    <div class="wrap">
+      <h2 class="section-title">Praktické informace</h2>
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="label">Kapacita</div>
+          <div class="value">8 míst</div>
+        </div>
+        <div class="info-card">
+          <div class="label">Cena</div>
+          <div class="value">888 Kč</div>
+        </div>
+        <div class="info-card">
+          <div class="label">V ceně</div>
+          <div class="value" style="font-size: 1.05rem;">Oběd + program</div>
+        </div>
+      </div>
+      <p class="lede" style="margin-bottom: 16px;"><strong>Co s sebou</strong></p>
+      <ul class="bring-list">
+        <li>Pohodlné oblečení, ve kterém se Ti dobře sedí</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="pruvodce">
+    <div class="wrap">
+      <h2 class="section-title">Kdo Tě dnem provede?</h2>
+      <div class="guide">
+        <div class="guide-avatar">TZ</div>
+        <h3>Tomáš Zahradník</h3>
+        <p>Tvořím bezpečný prostor, kde můžeš odložit svoje vnitřní brnění a vydechnout. Pomáhám vystoupit z neustálého tlaku na výkon a vrátit se zpátky do čisté PříTOMnosti.</p>
+        <p>Propojuju meditační praxi, sílu hlasu a zvukových lázní díky autentickým nástrojům z celého světa.</p>
+        <p>Do prostoru přináším kvalitu hlubokého naslouchání, principy transparentní komunikace a zkušenosti z 16 let fungujícího vztahu s mojí milovanou ženou. Ukazuju, že vědomá jemnost, láska a otevřenost nejsou slabostí, ale můžou být tou největší silou.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="prihlaska" class="final-cta">
+    <div class="wrap">
+      <h2 class="section-title">Zajisti si svoje místo</h2>
+      <p class="lede">Kapacita je omezena na 8 míst – náš prostor víc nepojme. Vyplň formulář a potvrď svoji účast.</p>
+      <!-- TODO: nahradit placeholder URL skutečným odkazem na registrační formulář -->
+      <a href="https://forms.gle/DOPLNIT-ODKAZ" class="cta-btn">Vyplnit přihlašovací formulář</a>
+      <p class="hero-meta" style="margin-top: 32px;">Těším se na společnou přítomnost 🙏🏻</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p>Tomáš Zahradník · <a href="mailto:info@tomaszahradnik.com">info@tomaszahradnik.com</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
