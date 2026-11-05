@@ -2139,13 +2139,20 @@
   /* ─── HERO PHOTO ─── */
   .tz-hero-photo-wrap {
     position: absolute;
-    right: 5%;
+    right: 6%;
     top: 50%;
     transform: translateY(-50%);
-    width: 270px;
-    height: 370px;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
     z-index: 3;
     pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .tz-hero:hover .tz-hero-photo-wrap {
+    opacity: 1;
   }
 
   .tz-hero-photo {
@@ -2154,51 +2161,17 @@
     object-fit: cover;
     object-position: center top;
     display: block;
-    filter: grayscale(100%) contrast(1.12) brightness(1.06);
-    -webkit-mask-image: radial-gradient(ellipse 88% 92% at 50% 46%,
-      black 46%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0.25) 78%, transparent 92%);
-    mask-image: radial-gradient(ellipse 88% 92% at 50% 46%,
-      black 46%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0.25) 78%, transparent 92%);
-    mix-blend-mode: luminosity;
-  }
-
-  /* Mesh overlay */
-  .tz-hero-photo-mesh {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 4;
-    background-image:
-      repeating-linear-gradient(0deg,
-        transparent, transparent 18px,
-        rgba(139,92,246,0.18) 18px, rgba(139,92,246,0.18) 19px),
-      repeating-linear-gradient(90deg,
-        transparent, transparent 18px,
-        rgba(109,40,217,0.14) 18px, rgba(109,40,217,0.14) 19px);
-    -webkit-mask-image: radial-gradient(ellipse 86% 90% at 50% 46%,
-      black 32%, rgba(0,0,0,0.55) 58%, transparent 80%);
-    mask-image: radial-gradient(ellipse 86% 90% at 50% 46%,
-      black 32%, rgba(0,0,0,0.55) 58%, transparent 80%);
-    mix-blend-mode: screen;
-    animation: tz-mesh-shift 28s linear infinite;
-  }
-
-  @keyframes tz-mesh-shift {
-    0%   { background-position: 0 0, 0 0; }
-    100% { background-position: 38px 38px, 38px 38px; }
+    border-radius: 50%;
+    filter: grayscale(100%) contrast(1.1) brightness(1.08);
   }
 
   @media (max-width: 700px) {
     .tz-hero-gradient { width: 100%; opacity: 0.55; }
-    .tz-hero-photo-wrap { right: 50%; transform: translate(50%, -50%); width: 220px; height: 300px; }
+    .tz-hero-photo-wrap { right: 50%; transform: translate(50%, -50%); width: 180px; height: 180px; }
   }
   @media (max-width: 480px) {
     .tz-hero-gradient { display: none; }
     .tz-hero-photo-wrap { display: none; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .tz-hero-photo-mesh { animation: none !important; }
   }
 
   /* ─── RESPONSIVE ─── */
@@ -2297,7 +2270,6 @@
 
     <div class="tz-hero-photo-wrap" aria-hidden="true">
       <img class="tz-hero-photo" src="foto/hero.jpg" alt="">
-      <div class="tz-hero-photo-mesh"></div>
     </div>
 
   </div>
