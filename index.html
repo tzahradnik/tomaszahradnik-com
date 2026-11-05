@@ -89,7 +89,7 @@
   </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { background: #FAFAF8; }
+    html, body { background: #FAFAF8; font-size: 17px; }
   </style>
 
 <style>
@@ -345,7 +345,7 @@
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #4CAF50;
+    background: #F97316;
     flex-shrink: 0;
     position: relative;
   }
@@ -355,7 +355,7 @@
     position: absolute;
     inset: -3px;
     border-radius: 50%;
-    background: #4CAF5040;
+    background: #F9731640;
     animation: tz-ripple 2s ease-out infinite;
   }
 
@@ -587,7 +587,8 @@
     border-color: var(--accent);
     box-shadow: 0 4px 14px rgba(106,76,147,0.14);
   }
-  .tz-mq-logo img {
+  .tz-mq-logo img,
+  .tz-mq-logo svg {
     max-height: 30px;
     max-width: 100px;
     width: auto;
@@ -597,7 +598,8 @@
     transition: filter 0.35s ease;
     display: block;
   }
-  .tz-mq-logo:hover img {
+  .tz-mq-logo:hover img,
+  .tz-mq-logo:hover svg {
     filter: grayscale(0%) opacity(1);
   }
 
@@ -2283,11 +2285,7 @@
 
       <div class="tz-capacity-row">
         <span class="tz-avail-dot"></span>
-        <span class="tz-capacity-label">Aktuálně dostupný</span>
-        <div class="tz-capacity-bar-wrap">
-          <div class="tz-capacity-bar"></div>
-        </div>
-        <span class="tz-capacity-value">25 % kapacity</span>
+        <span class="tz-capacity-label" style="white-space: normal; font-size: 0.9rem; text-transform: none; letter-spacing: 0; font-weight: 600; color: var(--text-secondary);">Mám kapacitu pro 1 až 2 klienty</span>
       </div>
 
       <div class="tz-contact-pills">
@@ -2345,36 +2343,36 @@
         <div class="tz-logo-marquee-outer">
           <div class="tz-logo-marquee-row">
             <div class="tz-logo-marquee-track">
-              <div class="tz-mq-logo"><img src="https://gramino.cz/wp-content/uploads/2025/01/lyopotraviny.svg" alt="Lyo Potraviny"></div>
-              <div class="tz-mq-logo"><img src="https://www.somfy.cz/common/img/minisites/cz_v5/cz_v5_170002510/logo/labona_tm_digital_on_light_background_RGB.PNG" alt="Labona"></div>
+              <div class="tz-mq-logo"><img src="https://cdn.myshoptet.com/usr/www.lyopotraviny.cz/user/logos/na__vrh_bez_na__zvu_(1).svg" alt="Lyo Potraviny"></div>
+              <div class="tz-mq-logo"><img src="/logos/labona.webp" alt="Labona"></div>
               <div class="tz-mq-logo"><img src="https://cdn.myshoptet.com/usr/www.pokojicky-tepe.cz/user/logos/1200______1200__blank_edit2-2.png" alt="Pokojíčky TEPE"></div>
               <div class="tz-mq-logo"><img src="https://viruzin.czechvirus.cz/wp-content/uploads/2021/02/logo-czech-virus.png" alt="Czech Virus"></div>
               <div class="tz-mq-logo"><img src="https://skinnersfootwear.eu/cdn/shop/files/logo-Skinners-_RGB_-Black.jpg?height=628&pad_color=fff&v=1716363105&width=1200" alt="Skinners"></div>
               <div class="tz-mq-logo"><img src="https://mubite.com/site-images/global/logo.webp" alt="Mubite" style="filter:grayscale(100%) brightness(0) opacity(0.5);"></div>
-              <div class="tz-mq-logo"><img src="https://www.lifechi.cz/storage/app/uploads/public/67e/3c3/622/67e3c362202ac776977564.png" alt="Lifechi"></div>
+              <div class="tz-mq-logo"><img src="https://www.lifechi.cz/storage/app/uploads/public/6a1/d79/2f9/6a1d792f993b7633732426.jpg" alt="Lifechi"></div>
               <div class="tz-mq-logo"><img src="https://www.vitalvibe.eu/themes/vitalvibe/code/svg/logo2.svg" alt="VitalVibe"></div>
               <div class="tz-mq-logo"><img src="https://static.nofluffjobs.com/companies/logos/original/frontman_logo_ctverec_cerne_na_bilem_pozadi_20220420_081928.jpg" alt="Frontman"></div>
-              <div class="tz-mq-logo"><img src="https://www.semix.cz/www/upload/logo/20210602103919985.png" alt="Semix"></div>
-              <div class="tz-mq-logo"><img src="https://podniknito.cz/themes/custom/podniknito_theme/img/logo.png" alt="Podniknito"></div>
+              <div class="tz-mq-logo"><img src="https://www.semix.cz/files/front/logo.svg" alt="Semix"></div>
+              <div class="tz-mq-logo" style="padding: 0.4rem 0.8rem;"><svg viewBox="0 0 200 64" style="height:28px;width:auto;" role="img" aria-label="Podnikni to!"><polygon points="8,10 196,2 188,56 0,62" fill="#f5c81e"></polygon><text x="98" y="41" text-anchor="middle" font-family="'Fira Sans', sans-serif" font-weight="900" font-size="26" fill="#050503">Podnikni to!</text></svg></div>
               <div class="tz-mq-logo"><img src="https://cdn.myshoptet.com/usr/www.movle.clothing/user/logos/movle125x50.svg" alt="Movle"></div>
               <div class="tz-mq-logo"><img src="https://omelixir.com/cdn/shop/files/logo_omelixir-zlate.png?v=1744819763&width=120" alt="Omelixir"></div>
-              <div class="tz-mq-logo"><img src="https://colectio-dist.fra1.digitaloceanspaces.com/production/20260413a/images/logo-full-color.svg" alt="Colectio"></div>
+              <div class="tz-mq-logo"><img src="https://colectio.cz/images/logo-full-color.svg" alt="Colectio"></div>
               <div class="tz-mq-logo"><img src="https://hezkey.cz/img/static/brand/hezkey-logo.svg" alt="Hezkey"></div>
               <!-- kopie -->
-              <div class="tz-mq-logo"><img src="https://gramino.cz/wp-content/uploads/2025/01/lyopotraviny.svg" alt="Lyo Potraviny"></div>
-              <div class="tz-mq-logo"><img src="https://www.somfy.cz/common/img/minisites/cz_v5/cz_v5_170002510/logo/labona_tm_digital_on_light_background_RGB.PNG" alt="Labona"></div>
+              <div class="tz-mq-logo"><img src="https://cdn.myshoptet.com/usr/www.lyopotraviny.cz/user/logos/na__vrh_bez_na__zvu_(1).svg" alt="Lyo Potraviny"></div>
+              <div class="tz-mq-logo"><img src="/logos/labona.webp" alt="Labona"></div>
               <div class="tz-mq-logo"><img src="https://cdn.myshoptet.com/usr/www.pokojicky-tepe.cz/user/logos/1200______1200__blank_edit2-2.png" alt="Pokojíčky TEPE"></div>
               <div class="tz-mq-logo"><img src="https://viruzin.czechvirus.cz/wp-content/uploads/2021/02/logo-czech-virus.png" alt="Czech Virus"></div>
               <div class="tz-mq-logo"><img src="https://skinnersfootwear.eu/cdn/shop/files/logo-Skinners-_RGB_-Black.jpg?height=628&pad_color=fff&v=1716363105&width=1200" alt="Skinners"></div>
               <div class="tz-mq-logo"><img src="https://mubite.com/site-images/global/logo.webp" alt="Mubite" style="filter:grayscale(100%) brightness(0) opacity(0.5);"></div>
-              <div class="tz-mq-logo"><img src="https://www.lifechi.cz/storage/app/uploads/public/67e/3c3/622/67e3c362202ac776977564.png" alt="Lifechi"></div>
+              <div class="tz-mq-logo"><img src="https://www.lifechi.cz/storage/app/uploads/public/6a1/d79/2f9/6a1d792f993b7633732426.jpg" alt="Lifechi"></div>
               <div class="tz-mq-logo"><img src="https://www.vitalvibe.eu/themes/vitalvibe/code/svg/logo2.svg" alt="VitalVibe"></div>
               <div class="tz-mq-logo"><img src="https://static.nofluffjobs.com/companies/logos/original/frontman_logo_ctverec_cerne_na_bilem_pozadi_20220420_081928.jpg" alt="Frontman"></div>
-              <div class="tz-mq-logo"><img src="https://www.semix.cz/www/upload/logo/20210602103919985.png" alt="Semix"></div>
-              <div class="tz-mq-logo"><img src="https://podniknito.cz/themes/custom/podniknito_theme/img/logo.png" alt="Podniknito"></div>
+              <div class="tz-mq-logo"><img src="https://www.semix.cz/files/front/logo.svg" alt="Semix"></div>
+              <div class="tz-mq-logo" style="padding: 0.4rem 0.8rem;"><svg viewBox="0 0 200 64" style="height:28px;width:auto;" role="img" aria-label="Podnikni to!"><polygon points="8,10 196,2 188,56 0,62" fill="#f5c81e"></polygon><text x="98" y="41" text-anchor="middle" font-family="'Fira Sans', sans-serif" font-weight="900" font-size="26" fill="#050503">Podnikni to!</text></svg></div>
               <div class="tz-mq-logo"><img src="https://cdn.myshoptet.com/usr/www.movle.clothing/user/logos/movle125x50.svg" alt="Movle"></div>
               <div class="tz-mq-logo"><img src="https://omelixir.com/cdn/shop/files/logo_omelixir-zlate.png?v=1744819763&width=120" alt="Omelixir"></div>
-              <div class="tz-mq-logo"><img src="https://colectio-dist.fra1.digitaloceanspaces.com/production/20260413a/images/logo-full-color.svg" alt="Colectio"></div>
+              <div class="tz-mq-logo"><img src="https://colectio.cz/images/logo-full-color.svg" alt="Colectio"></div>
               <div class="tz-mq-logo"><img src="https://hezkey.cz/img/static/brand/hezkey-logo.svg" alt="Hezkey"></div>
             </div>
           </div>
@@ -2404,7 +2402,7 @@
               jak je potřeba. Pracuju na projektech souběžně, proto mám stále volnou část kapacity.
             </p>
             <div class="tz-job-results">
-              <span class="tz-result-tag" style="background: #E8F5E9; color: #2E7D32; border-color: #C8E6C9;">25 % kapacity volné</span>
+              <span class="tz-result-tag" style="background: #FFF3E0; color: #E65100; border-color: #FFCC80;">1–2 klienti k dispozici</span>
               <span class="tz-result-tag">Strategie</span>
               <span class="tz-result-tag">Vedení týmů</span>
               <span class="tz-result-tag">Mentoring</span>
@@ -2613,33 +2611,46 @@
           <summary>
             <div class="tz-collapsible-header">
               <span class="tz-collapsible-title">Knihy</span>
-              <span class="tz-collapsible-subtitle">Čtu aktivně – marketing, psychologie, byznys, biografie, sci-fi. Celý seznam přečtených knih na Goodreads.</span>
+              <span class="tz-collapsible-subtitle">Přečtené knihy z oblasti marketingu, podnikání, UX a webu. Celý seznam na Goodreads.</span>
             </div>
             <svg class="tz-collapsible-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
           </summary>
           <div class="tz-collapsible-body">
             <div class="tz-books-list">
-              <div class="tz-book-item"><span>Myšlení, rychlé a pomalé</span><span class="tz-book-author">Kahneman</span></div>
-              <div class="tz-book-item"><span>Atomové návyky</span><span class="tz-book-author">James Clear</span></div>
-              <div class="tz-book-item"><span>Začněte s proč</span><span class="tz-book-author">Simon Sinek</span></div>
-              <div class="tz-book-item"><span>Budování značky StoryBrand</span><span class="tz-book-author">Donald Miller</span></div>
               <div class="tz-book-item"><span>Tohle je marketing!</span><span class="tz-book-author">Seth Godin</span></div>
               <div class="tz-book-item"><span>Fialová kráva</span><span class="tz-book-author">Seth Godin</span></div>
-              <div class="tz-book-item"><span>Zbraně vlivu</span><span class="tz-book-author">Robert Cialdini</span></div>
+              <div class="tz-book-item"><span>Kopni do té bedny</span><span class="tz-book-author">Seth Godin</span></div>
+              <div class="tz-book-item"><span>Budování značky StoryBrand</span><span class="tz-book-author">Donald Miller</span></div>
+              <div class="tz-book-item"><span>Obsahový marketing</span><span class="tz-book-author">Josef Řezníček</span></div>
+              <div class="tz-book-item"><span>Webcopywriting pro samouky</span><span class="tz-book-author">Pavel Šenkapoun</span></div>
+              <div class="tz-book-item"><span>Milionový email</span><span class="tz-book-author">David Kirš</span></div>
+              <div class="tz-book-item"><span>Černá ovce Facebooku</span><span class="tz-book-author">Lukáš Kriška</span></div>
               <div class="tz-book-item"><span>Jak stvořit pecku na trhu</span><span class="tz-book-author">Jonah Berger</span></div>
-              <div class="tz-book-item"><span>Jak drahé je zdarma</span><span class="tz-book-author">Dan Ariely</span></div>
+              <div class="tz-book-item"><span>Prodávat je lidské</span><span class="tz-book-author">Daniel H. Pink</span></div>
+              <div class="tz-book-item"><span>Zbraně vlivu</span><span class="tz-book-author">Robert Cialdini</span></div>
               <div class="tz-book-item"><span>Nikdy nedělej kompromis</span><span class="tz-book-author">Chris Voss</span></div>
-              <div class="tz-book-item"><span>Čtyřhodinový pracovní týden</span><span class="tz-book-author">Tim Ferriss</span></div>
-              <div class="tz-book-item"><span>Hluboká práce</span><span class="tz-book-author">Cal Newport</span></div>
-              <div class="tz-book-item"><span>Od nuly k jedničce</span><span class="tz-book-author">Peter Thiel</span></div>
-              <div class="tz-book-item"><span>Jak z dobré firmy udělat skvělou</span><span class="tz-book-author">Jim Collins</span></div>
-              <div class="tz-book-item"><span>Esencialismus</span><span class="tz-book-author">Greg McKeown</span></div>
-              <div class="tz-book-item"><span>Lean Startup</span><span class="tz-book-author">Eric Ries</span></div>
+              <div class="tz-book-item"><span>Jak drahé je zdarma</span><span class="tz-book-author">Dan Ariely</span></div>
+              <div class="tz-book-item"><span>Myšlení, rychlé a pomalé</span><span class="tz-book-author">Daniel Kahneman</span></div>
+              <div class="tz-book-item"><span>Skvělé služby</span><span class="tz-book-author">Adam Hazdra</span></div>
+              <div class="tz-book-item"><span>Kraď jako umělec</span><span class="tz-book-author">Austin Kleon</span></div>
+              <div class="tz-book-item"><span>Ukáž, co děláš</span><span class="tz-book-author">Austin Kleon</span></div>
+              <div class="tz-book-item"><span>The Sketchnote Handbook</span><span class="tz-book-author">Mike Rohde</span></div>
               <div class="tz-book-item"><span>Hooked</span><span class="tz-book-author">Nir Eyal</span></div>
-              <div class="tz-book-item"><span>$100M Offers</span><span class="tz-book-author">Alex Hormozi</span></div>
               <div class="tz-book-item"><span>The Mom Test</span><span class="tz-book-author">Rob Fitzpatrick</span></div>
               <div class="tz-book-item"><span>Obviously Awesome</span><span class="tz-book-author">April Dunford</span></div>
+              <div class="tz-book-item"><span>Od nuly k jedničce</span><span class="tz-book-author">Peter Thiel</span></div>
+              <div class="tz-book-item"><span>Lean Startup</span><span class="tz-book-author">Eric Ries</span></div>
+              <div class="tz-book-item"><span>Startup za pakatel</span><span class="tz-book-author">Chris Guillebeau</span></div>
               <div class="tz-book-item"><span>Traction</span><span class="tz-book-author">Weinberg &amp; Mares</span></div>
+              <div class="tz-book-item"><span>$100M Offers</span><span class="tz-book-author">Alex Hormozi</span></div>
+              <div class="tz-book-item"><span>Jak z dobré firmy udělat skvělou</span><span class="tz-book-author">Jim Collins</span></div>
+              <div class="tz-book-item"><span>Začněte s proč</span><span class="tz-book-author">Simon Sinek</span></div>
+              <div class="tz-book-item"><span>Práce na dálku</span><span class="tz-book-author">Hansson &amp; Heinemeier</span></div>
+              <div class="tz-book-item"><span>Čtyřhodinový pracovní týden</span><span class="tz-book-author">Tim Ferriss</span></div>
+              <div class="tz-book-item"><span>Atomové návyky</span><span class="tz-book-author">James Clear</span></div>
+              <div class="tz-book-item"><span>Esencialismus</span><span class="tz-book-author">Greg McKeown</span></div>
+              <div class="tz-book-item"><span>Hluboká práce</span><span class="tz-book-author">Cal Newport</span></div>
+              <div class="tz-book-item"><span>Konec prokrastinace</span><span class="tz-book-author">Petr Ludwig</span></div>
             </div>
             <a href="https://www.goodreads.com/tomaszahradnik" target="_blank" rel="noopener" class="tz-goodreads-link">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
@@ -2881,7 +2892,8 @@
       </div>
       <!-- ═══ PATIČKA ═══ -->
       <footer class="tz-footer-strip">
-        <p>© 1994 – 2026 <strong>Navajboval sám sobě Tomáš Zahradník</strong></p>
+        <p>© 1994 – 2026 <strong>Tomáš Zahradník</strong></p>
+        <p style="font-style: italic; opacity: 0.7;">Navajboval sám sobě</p>
         <p>Jsem fyzická osoba (neplátce DPH) zapsaná v Živnostenském rejstříku od 3.&nbsp;8.&nbsp;2012, evidovaná Magistrátem města Brna pod <strong>IČ:&nbsp;00731447</strong></p>
       </footer>
     </div>
