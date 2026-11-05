@@ -89,7 +89,7 @@
   </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { background: #FAFAF8; font-size: 17px; }
+    html, body { background: #FAFAF8; font-size: 17px; overflow-x: hidden; }
   </style>
 
 <style>
@@ -121,7 +121,6 @@
     background: var(--surface);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
   }
 
   .tz-cv-block a {
@@ -447,7 +446,6 @@
 
   .tz-pillar-card {
     will-change: transform;
-    transform-style: preserve-3d;
     background: white;
     border: 1.5px solid var(--border);
     border-radius: 16px;
@@ -772,7 +770,6 @@
 
   .tz-job-card {
     will-change: transform;
-    transform-style: preserve-3d;
   }
 
   .tz-job-card:hover {
@@ -1226,11 +1223,6 @@
     white-space: nowrap;
     flex-shrink: 0;
   }
-  .tz-book-author::before {
-    content: " — ";
-    color: var(--border);
-  }
-
   .tz-goodreads-link {
     display: inline-flex;
     align-items: center;
@@ -1347,7 +1339,6 @@
 
   .tz-pricing-card {
     will-change: transform;
-    transform-style: preserve-3d;
     background: rgba(255,255,255,0.97);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -1895,10 +1886,10 @@
     padding: 1.5rem 2rem;
     border-top: 1px solid rgba(255,255,255,0.1);
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    gap: 0.5rem 2rem;
-    flex-wrap: wrap;
+    text-align: center;
+    gap: 0.4rem;
   }
 
   .tz-footer-strip p {
@@ -2808,7 +2799,7 @@
             Číst více <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
           <div class="tz-testimonial-author">
-            <div class="tz-testimonial-avatar"><img src="https://gramino.cz/wp-content/uploads/2025/01/lyopotraviny.svg" alt="Lyopotraviny"></div>
+            <div class="tz-testimonial-avatar"><img src="https://cdn.myshoptet.com/usr/www.lyopotraviny.cz/user/logos/na__vrh_bez_na__zvu_(1).svg" alt="Lyopotraviny"></div>
             <div>
               <div class="tz-testimonial-name">Lenka Bláhová</div>
               <div class="tz-testimonial-role">Majitelka · Lyopotraviny s.r.o.</div>
@@ -2844,7 +2835,7 @@
             Číst více <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
           <div class="tz-testimonial-author">
-            <div class="tz-testimonial-avatar"><img src="https://www.lifechi.cz/storage/app/uploads/public/67e/3c3/622/67e3c362202ac776977564.png" alt="LifeChi"></div>
+            <div class="tz-testimonial-avatar"><img src="https://www.lifechi.cz/storage/app/uploads/public/6a1/d79/2f9/6a1d792f993b7633732426.jpg" alt="LifeChi"></div>
             <div>
               <div class="tz-testimonial-name">Tomáš Měřínský</div>
               <div class="tz-testimonial-role">Majitel · LifeChi</div>
@@ -2892,7 +2883,6 @@
       <!-- ═══ PATIČKA ═══ -->
       <footer class="tz-footer-strip">
         <p>© 1994 – 2026 <strong>Tomáš Zahradník</strong></p>
-        <p style="font-style: italic; opacity: 0.7;">Navajboval sám sobě</p>
         <p>Jsem fyzická osoba (neplátce DPH) zapsaná v Živnostenském rejstříku od 3.&nbsp;8.&nbsp;2012, evidovaná Magistrátem města Brna pod <strong>IČ:&nbsp;00731447</strong></p>
       </footer>
     </div>
